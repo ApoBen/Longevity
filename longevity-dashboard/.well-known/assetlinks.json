@@ -1,0 +1,10 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "io.github.apoben.twa",
+    "sha256_cert_fingerprints": [
+      "12:F1:4C:FB:44:11:4F:D9:88:47:82:BF:8F:BF:C9:67:57:AC:D7:F2:63:83:14:2A:33:11:84:3A:32:16:90:6A"
+    ]
+  }
+}]
