@@ -119,7 +119,7 @@ fun HomeScreen(viewModel: MainViewModel, onNavigateToExport: () -> Unit) {
                 Spacer(modifier = Modifier.height(32.dp))
 
                 Button(
-                    onClick = { viewModel.generateReportNow() },
+                    onClick = { viewModel.exportJsonNow() },
                     enabled = !isGenerating,
                     modifier = Modifier.fillMaxWidth().height(56.dp)
                 ) {
@@ -131,7 +131,7 @@ fun HomeScreen(viewModel: MainViewModel, onNavigateToExport: () -> Unit) {
                         Spacer(modifier = Modifier.width(8.dp))
                         Text("Oluşturuluyor...")
                     } else {
-                        Text("Şimdi Rapor Oluştur")
+                        Text("Bugünün Verisini JSON Olarak Çıkar")
                     }
                 }
                 
@@ -142,7 +142,7 @@ fun HomeScreen(viewModel: MainViewModel, onNavigateToExport: () -> Unit) {
                     colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary),
                     modifier = Modifier.fillMaxWidth().height(56.dp)
                 ) {
-                    Text("Gelişmiş Veri Dışa Aktarımı")
+                    Text("Gelişmiş Veri Dışa Aktarımı (Tarih Aralığı)")
                 }
             }
 

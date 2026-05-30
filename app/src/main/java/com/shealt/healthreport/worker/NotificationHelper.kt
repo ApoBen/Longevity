@@ -70,4 +70,42 @@ class NotificationHelper @Inject constructor(
         
         notificationManager.notify(System.currentTimeMillis().toInt(), builder.build())
     }
+
+    fun showJsonReadyNotification(jsonFile: File) {
+        val uri: Uri = FileProvider.getUriForFile(
+            context,
+            "${context.packageName}.fileprovider",
+            jsonFile
+        )
+
+        val intent = Intent(Intent.ACTION_SEND).apply {
+            type = "application/json"
+            putExtra(Intent.EXTRA_STREAM, uri)
+            flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
+        }
+
+        val chooserIntent = Intent.createChooser(intent, "JSON Verisini Paylaş").apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+        }
+
+        val pendingIntent: PendingIntent = PendingIntent.getActivity(
+            context,
+            1,
+            chooserIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+
+        val builder = NotificationCompat.Builder(context, channelId)
+            .setSmallIcon(android.R.drawable.ic_dialog_info)
+            .setContentTitle("JSON Verisi Dışa Aktarıldı")
+            .setContentText("Veriyi paylaşmak veya kaydetmek için dokunun.")
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setContentIntent(pendingIntent)
+            .setAutoCancel(true)
+
+        val notificationManager: NotificationManager =
+            context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        
+        notificationManager.notify(System.currentTimeMillis().toInt(), builder.build())
+    }
 }

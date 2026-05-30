@@ -73,7 +73,7 @@ export const DataImporter = {
         if (!data || typeof data !== 'object') return false;
         
         // Check for version and days list
-        if (!data.exportVersion || !Array.isArray(data.days)) {
+        if (data.exportVersion !== '2.0' || !Array.isArray(data.days)) {
             return false;
         }
 

@@ -189,6 +189,7 @@ class MainViewModel @Inject constructor(
                 val file = jsonExporter.exportReport(report)
 
                 if (file != null) {
+                    notificationHelper.showJsonReadyNotification(file)
                     _statusMessage.value = "JSON başarıyla dışa aktarıldı: ${file.name}"
                 } else {
                     _errorMessage.value = "JSON dosyası oluşturulamadı."
@@ -294,6 +295,7 @@ class MainViewModel @Inject constructor(
                 val file = jsonExporter.exportMultipleReports(reports, startDate, endDate)
 
                 if (file != null) {
+                    notificationHelper.showJsonReadyNotification(file)
                     _statusMessage.value = "JSON başarıyla dışa aktarıldı: ${file.name}"
                 } else {
                     _errorMessage.value = "JSON dosyası oluşturulamadı."

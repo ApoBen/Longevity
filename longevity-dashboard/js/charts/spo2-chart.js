@@ -20,8 +20,8 @@ export function renderSpo2Chart(canvas, spo2Data) {
     hourly.forEach(item => {
         const h = item.hour;
         if (h >= 0 && h < 24 && item.count > 0) {
-            lineData[h] = item.avgSpo2;
-            minData[h] = item.minSpo2;
+            lineData[h] = item.avg;
+            minData[h] = item.min;
             rawHourly[h] = item;
         }
     });
@@ -90,9 +90,9 @@ export function renderSpo2Chart(canvas, spo2Data) {
                             if (!hData) return 'Ölçüm yok';
 
                             if (context.datasetIndex === 0) {
-                                return `Ortalama: ${hData.avgSpo2.toFixed(1)}%`;
+                                return `Ortalama: ${hData.avg.toFixed(1)}%`;
                             } else {
-                                return `En Düşük: ${hData.minSpo2}% (${hData.readingCount} ölçüm)`;
+                                return `En Düşük: ${hData.min}% (${hData.count} ölçüm)`;
                             }
                         }
                     }

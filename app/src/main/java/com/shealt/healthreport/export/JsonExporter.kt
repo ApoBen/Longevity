@@ -31,8 +31,8 @@ class JsonExporter @Inject constructor(
             
             val jsonString = gson.toJson(exportData)
 
-            val downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
-            val longevityDir = File(downloadsDir, "Longevity")
+            val docsDir = context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS)
+            val longevityDir = File(docsDir, "Longevity")
             if (!longevityDir.exists()) {
                 longevityDir.mkdirs()
             }
@@ -62,8 +62,8 @@ class JsonExporter @Inject constructor(
             
             val jsonString = gson.toJson(exportData)
 
-            val downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
-            val longevityDir = File(downloadsDir, "Longevity")
+            val docsDir = context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS)
+            val longevityDir = File(docsDir, "Longevity")
             if (!longevityDir.exists()) {
                 longevityDir.mkdirs()
             }
