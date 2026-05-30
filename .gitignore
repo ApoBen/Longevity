@@ -1,0 +1,24 @@
+# Build outputs
+build/
+app/build/
+*.apk
+*.aab
+
+# Gradle
+.gradle/
+local.properties
+
+# IDE
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# SDK zip (too large for git)
+samsung-health-data-sdk-1.1.0.zip
+
+# Gemini AI data
+.gemini/
+_ai_docs/
