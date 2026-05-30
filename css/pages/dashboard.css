@@ -1,0 +1,321 @@
+/* Dashboard Page Specific Styles - Longevity Platform */
+
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Date Navigator Card */
+.date-navigator-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-4) var(--space-6);
+    width: 100%;
+    margin-top: var(--space-2);
+}
+
+.current-date-info {
+    text-align: center;
+}
+
+.current-date-info h2 {
+    font-size: var(--font-lg);
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    background: linear-gradient(135deg, #ffffff 0%, var(--text-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.current-date-info .subtitle {
+    font-size: var(--font-xs);
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-top: 2px;
+}
+
+/* Dashboard Grid Layout */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-6);
+    }
+}
+
+/* Dashboard Cards */
+.dashboard-card {
+    padding: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    min-height: 165px;
+    position: relative;
+    overflow: hidden;
+}
+
+.clickable-card {
+    cursor: pointer;
+}
+
+.clickable-card:hover {
+    transform: translateY(-4px);
+}
+
+.card-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.card-icon-bg {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radius-md);
+}
+
+.card-icon-bg i {
+    width: 20px;
+    height: 20px;
+}
+
+/* Soft Icon Background Glows */
+.bg-danger-soft {
+    background: rgba(239, 68, 68, 0.15);
+}
+.icon-danger {
+    color: var(--color-danger);
+    filter: drop-shadow(0 0 4px rgba(239, 68, 68, 0.3));
+}
+
+.bg-primary-soft {
+    background: rgba(59, 130, 246, 0.15);
+}
+.icon-primary {
+    color: var(--color-primary);
+    filter: drop-shadow(0 0 4px rgba(59, 130, 246, 0.3));
+}
+
+.bg-success-soft {
+    background: rgba(16, 185, 129, 0.15);
+}
+.icon-success {
+    color: var(--color-success);
+    filter: drop-shadow(0 0 4px rgba(16, 185, 129, 0.3));
+}
+
+.bg-warning-soft {
+    background: rgba(245, 158, 11, 0.15);
+}
+.icon-warning {
+    color: var(--color-warning);
+    filter: drop-shadow(0 0 4px rgba(245, 158, 11, 0.3));
+}
+
+.bg-purple-soft {
+    background: rgba(139, 92, 246, 0.15);
+}
+.icon-purple {
+    color: var(--color-purple);
+    filter: drop-shadow(0 0 4px rgba(139, 92, 246, 0.3));
+}
+
+.bg-teal-soft {
+    background: rgba(20, 184, 166, 0.15);
+}
+.icon-teal {
+    color: var(--color-teal);
+    filter: drop-shadow(0 0 4px rgba(20, 184, 166, 0.3));
+}
+
+/* Sparklines */
+.card-sparkline {
+    display: inline-block;
+    width: 60px;
+    height: 24px;
+}
+
+/* Card Values */
+.card-value-container {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-1);
+    margin-top: var(--space-1);
+}
+
+.card-value {
+    font-size: var(--font-3xl);
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+    color: var(--text-primary);
+}
+
+.card-unit {
+    font-size: var(--font-xs);
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.card-title {
+    font-size: var(--font-xs);
+    font-weight: 700;
+    color: var(--text-secondary);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.card-footer-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--font-xs);
+    color: var(--text-muted);
+    margin-top: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    padding-top: var(--space-2);
+}
+
+.card-footer-row strong {
+    color: var(--text-secondary);
+}
+
+/* Energy Progress Bar */
+.energy-progress-container {
+    width: 100%;
+    margin-top: var(--space-1);
+}
+
+/* Empty State Card */
+.empty-state-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--space-10) var(--space-6);
+    text-align: center;
+    gap: var(--space-3);
+    min-height: 250px;
+}
+
+.empty-icon {
+    width: 48px;
+    height: 48px;
+    color: var(--text-muted);
+}
+
+.empty-state-card h3 {
+    font-size: var(--font-md);
+    font-weight: 700;
+}
+
+.empty-state-card p {
+    font-size: var(--font-sm);
+    color: var(--text-muted);
+    max-width: 400px;
+    line-height: 1.6;
+}
+
+/* Action Management Card */
+.dashboard-actions-card {
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    width: 100%;
+}
+
+.actions-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: var(--space-3);
+}
+
+.action-icon {
+    width: 22px;
+    height: 22px;
+    color: var(--color-primary);
+}
+
+.actions-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.action-desc {
+    font-size: var(--font-sm);
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.action-buttons-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+}
+
+.last-sync-info {
+    font-size: var(--font-xs);
+    color: var(--text-muted);
+}
+
+/* Medication Full Card */
+.dashboard-card-full {
+    width: 100%;
+    padding: var(--space-5);
+}
+
+.med-summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+}
+
+.med-summary-left {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.med-summary-text h4 {
+    font-size: var(--font-md);
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.med-summary-text p {
+    font-size: var(--font-xs);
+    color: var(--text-muted);
+}
+
+.med-summary-right {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.med-percentage {
+    font-size: var(--font-sm);
+    font-weight: 700;
+    color: var(--color-warning);
+}

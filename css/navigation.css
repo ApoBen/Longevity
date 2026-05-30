@@ -1,0 +1,85 @@
+/* Navigation Styles - Longevity Platform */
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 64px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 var(--space-2);
+    z-index: 999;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-1);
+    color: var(--text-muted);
+    height: 100%;
+    width: 100%;
+    padding: var(--space-1) 0;
+    transition: color var(--transition-fast), transform var(--transition-fast);
+    position: relative;
+    cursor: pointer;
+}
+
+.nav-icon {
+    width: 20px;
+    height: 20px;
+    transition: transform var(--transition-normal) cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nav-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: opacity var(--transition-fast);
+}
+
+/* Hover State */
+.nav-item:hover {
+    color: var(--text-secondary);
+}
+
+.nav-item:hover .nav-icon {
+    transform: translateY(-2px);
+}
+
+/* Active State with smooth accent-colored bar and glow */
+.nav-item.active {
+    color: var(--color-primary);
+}
+
+.nav-item.active .nav-icon {
+    transform: translateY(-4px) scale(1.1);
+}
+
+.nav-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary);
+    box-shadow: 0 2px 10px var(--color-primary);
+    border-radius: var(--radius-full);
+    transition: width var(--transition-normal) cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nav-item.active::before {
+    width: 32px;
+}
+
+/* Safe areas for premium bezel devices (iOS / Android pill) */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+    .bottom-nav {
+        height: calc(64px + env(safe-area-inset-bottom));
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+}
