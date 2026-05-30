@@ -38,6 +38,12 @@ export async function render(container) {
                         <label for="med-dose" class="form-label">Doz (mg)</label>
                         <input type="text" id="med-dose" class="input" required placeholder="Örn: 500">
                     </div>
+                </div>
+                <div class="form-row" style="display: flex; gap: 16px;">
+                    <div class="form-group" style="flex: 1; margin: 0;">
+                        <label for="med-times" class="form-label">Günlük Adet</label>
+                        <input type="number" id="med-times" class="input" required min="1" max="10" value="1">
+                    </div>
                     <div class="form-group" style="flex: 1; margin: 0;">
                         <label for="med-halflife" class="form-label">Yarı Ömür (Saat)</label>
                         <input type="number" id="med-halflife" class="input" required step="0.1" min="0.1" placeholder="Örn: 4">
@@ -92,6 +98,7 @@ export async function render(container) {
             id: 'med_' + Date.now(),
             name: document.getElementById('med-name').value,
             dose: document.getElementById('med-dose').value,
+            timesPerDay: parseInt(document.getElementById('med-times').value) || 1,
             halfLife: parseFloat(document.getElementById('med-halflife').value),
             color: document.getElementById('med-color').value,
             active: 1,
@@ -117,40 +124,65 @@ async function loadMedications() {
         
         if (meds.length === 0) {
             listContainer.innerHTML = \`
+            listContainer.innerHTML = `
                 <div class="empty-state glass-card" style="grid-column: 1 / -1; text-align: center; padding: 48px;">
                     <i data-lucide="pill" style="width: 48px; height: 48px; opacity: 0.5; margin-bottom: 16px; display: inline-block;"></i>
                     <h3 style="margin-bottom: 8px;">Henüz ilaç eklemediniz</h3>
                     <p style="opacity: 0.7;">Takip etmek istediğiniz ilaçları ekleyerek başlayın.</p>
                 </div>
-            \`;
+            `;
             lucide.createIcons();
             return;
         }
+        const todayStart = new Date();
+        todayStart.setHours(0,0,0,0);
+        const logs = await DB.getAll('medication_logs');
 
-        listContainer.innerHTML = meds.map(med => \`
-            <div class="medication-card glass-card" style="border-left: 4px solid \${med.color}; padding: 20px; display: flex; flex-direction: column; justify-content: space-between;">
+        listContainer.innerHTML = meds.map(med => {
+            const medLogs = logs.filter(l => l.medicationId === med.id && new Date(l.timestamp) >= todayStart);
+            const takenCount = medLogs.length;
+            const target = med.timesPerDay || 1;
+            
+            // Generate progress string ●●○
+            let progressStr = '';
+            for(let i=0; i<target; i++) {
+                progressStr += i < takenCount ? '●' : '○';
+            }
+            if (takenCount > target) {
+                progressStr += ' (Fazla doz!)';
+            }
+
+            return `
+            <div class="medication-card glass-card" style="border-left: 4px solid ${med.color}; padding: 20px; display: flex; flex-direction: column; justify-content: space-between;">
                 <div style="display: flex; justify-content: space-between; align-items: flex-start;">
                     <div>
-                        <h3 style="margin: 0 0 8px 0; font-size: 1.2rem;">\${med.name}</h3>
-                        <span class="badge" style="background: rgba(255,255,255,0.1); padding: 4px 8px; border-radius: 4px; font-size: 0.8rem;">\${med.dose} mg</span>
+                        <h3 style="margin: 0 0 8px 0; font-size: 1.2rem;">${med.name}</h3>
+                        <span class="badge" style="background: rgba(255,255,255,0.1); padding: 4px 8px; border-radius: 4px; font-size: 0.8rem;">${med.dose} mg</span>
                     </div>
-                    <div class="med-color-indicator" style="width: 16px; height: 16px; border-radius: 50%; background: \${med.color}; box-shadow: 0 0 8px \${med.color}"></div>
+                    <button class="btn-icon delete-btn" data-id="${med.id}" style="background: transparent; border: none; color: #ef4444; opacity: 0.5; cursor: pointer; padding: 4px;">
+                        <i data-lucide="trash-2" style="width: 16px; height: 16px;"></i>
+                    </button>
                 </div>
                 
-                <div style="margin-top: 16px; opacity: 0.8; font-size: 0.9rem; display: flex; align-items: center; gap: 6px;">
-                    <i data-lucide="clock" style="width: 16px; height: 16px;"></i> Yarı Ömür: \${med.halfLife} saat
+                <div style="margin-top: 16px; opacity: 0.8; font-size: 0.9rem; display: flex; flex-direction: column; gap: 6px;">
+                    <div><i data-lucide="clock" style="width: 14px; height: 14px; display: inline-block;"></i> Yarı Ömür: ${med.halfLife} saat</div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="letter-spacing: 2px; color: ${med.color}; font-size: 1.1rem;">${progressStr}</span>
+                        <span style="font-size: 0.8rem;">(${takenCount}/${target} alındı)</span>
+                    </div>
                 </div>
 
-                <div class="medication-actions" style="margin-top: 24px; display: flex; gap: 8px;">
-                    <button class="btn btn-secondary log-btn" data-id="\${med.id}" data-action="add" style="flex: 1; display: flex; justify-content: center; align-items: center; gap: 6px; background: rgba(34, 197, 94, 0.1); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.2);">
-                        <i data-lucide="plus-circle" style="width: 18px; height: 18px;"></i> Alındı
+                <div class="medication-actions" style="margin-top: 20px; display: flex; gap: 8px;">
+                    <button class="btn btn-secondary log-btn" data-id="${med.id}" style="flex: 2; display: flex; justify-content: center; align-items: center; gap: 6px; background: rgba(34, 197, 94, 0.1); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.2);">
+                        <i data-lucide="plus" style="width: 18px; height: 18px;"></i> Ekle
                     </button>
-                    <button class="btn btn-secondary delete-btn" data-id="\${med.id}" style="padding: 8px; color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.2); background: rgba(239, 68, 68, 0.05);">
-                        <i data-lucide="trash-2" style="width: 18px; height: 18px;"></i>
+                    <button class="btn btn-secondary undo-btn" data-id="${med.id}" style="flex: 1; display: flex; justify-content: center; align-items: center; color: #94a3b8; border: 1px solid rgba(255, 255, 255, 0.1); background: rgba(0,0,0,0.2);">
+                        <i data-lucide="minus" style="width: 18px; height: 18px;"></i> Geri Al
                     </button>
                 </div>
             </div>
-        \`).join('');
+            `;
+        }).join('');
 
         lucide.createIcons();
 
@@ -159,6 +191,16 @@ async function loadMedications() {
             btn.addEventListener('click', async (e) => {
                 const id = e.currentTarget.dataset.id;
                 await logMedicationIntake(id);
+                await loadMedications();
+            });
+        });
+
+        // Attach undo handlers
+        document.querySelectorAll('.undo-btn').forEach(btn => {
+            btn.addEventListener('click', async (e) => {
+                const id = e.currentTarget.dataset.id;
+                await undoMedicationIntake(id);
+                await loadMedications();
             });
         });
 
@@ -192,6 +234,21 @@ async function logMedicationIntake(medicationId) {
     // Show a small toast notification
     showToast('İlaç alımı kaydedildi', 'success');
     await updatePharmaChart();
+}
+
+async function undoMedicationIntake(medicationId) {
+    const logs = await DB.getAll('medication_logs');
+    const medLogs = logs.filter(l => l.medicationId === medicationId)
+                        .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+    
+    if (medLogs.length > 0) {
+        const lastLog = medLogs[0];
+        await DB.delete('medication_logs', lastLog.id);
+        showToast('Son alım geri alındı', 'primary');
+        await updatePharmaChart();
+    } else {
+        alert('Geri alınacak kayıt bulunamadı.');
+    }
 }
 
 function showToast(message, type = 'success') {

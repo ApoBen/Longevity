@@ -24,8 +24,8 @@ export function renderHeartRateChart(canvas, heartRateData) {
     hourly.forEach(item => {
         const h = item.hour;
         if (h >= 0 && h < 24 && item.count > 0) {
-            barData[h] = [item.minBpm, item.maxBpm];
-            lineData[h] = item.avgBpm;
+            barData[h] = [item.min, item.max];
+            lineData[h] = item.avg;
             rawHourly[h] = item;
         }
     });
@@ -108,9 +108,9 @@ export function renderHeartRateChart(canvas, heartRateData) {
                             if (!hData) return 'Ölçüm yok';
                             
                             if (context.datasetIndex === 0) {
-                                return `Ortalama: ${hData.avgBpm} BPM`;
+                                return `Ortalama: ${hData.avg} BPM`;
                             } else {
-                                return `Aralık: ${hData.minBpm} - ${hData.maxBpm} BPM (${hData.readingCount} ölçüm)`;
+                                return `Aralık: ${hData.min} - ${hData.max} BPM (${hData.count} ölçüm)`;
                             }
                         }
                     }
