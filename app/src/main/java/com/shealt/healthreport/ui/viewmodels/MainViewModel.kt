@@ -55,6 +55,13 @@ class MainViewModel @Inject constructor(
     private val _statusMessage = MutableStateFlow<String?>(null)
     val statusMessage: StateFlow<String?> = _statusMessage.asStateFlow()
 
+    private val _exportedFile = MutableStateFlow<java.io.File?>(null)
+    val exportedFile: StateFlow<java.io.File?> = _exportedFile.asStateFlow()
+
+    fun clearExportedFile() {
+        _exportedFile.value = null
+    }
+
     val reports: StateFlow<List<ReportEntity>> = reportDao.getAllReports()
         .stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
 
@@ -190,6 +197,7 @@ class MainViewModel @Inject constructor(
 
                 if (file != null) {
                     notificationHelper.showJsonReadyNotification(file)
+                    _exportedFile.value = file
                     _statusMessage.value = "JSON başarıyla dışa aktarıldı: ${file.name}"
                 } else {
                     _errorMessage.value = "JSON dosyası oluşturulamadı."
@@ -296,6 +304,7 @@ class MainViewModel @Inject constructor(
 
                 if (file != null) {
                     notificationHelper.showJsonReadyNotification(file)
+                    _exportedFile.value = file
                     _statusMessage.value = "JSON başarıyla dışa aktarıldı: ${file.name}"
                 } else {
                     _errorMessage.value = "JSON dosyası oluşturulamadı."

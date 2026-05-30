@@ -18,6 +18,31 @@ fun ExportScreen(viewModel: MainViewModel, onBack: () -> Unit) {
     val isGenerating by viewModel.isGeneratingReport.collectAsState()
     val statusMessage by viewModel.statusMessage.collectAsState()
     val errorMessage by viewModel.errorMessage.collectAsState()
+    val exportedFile by viewModel.exportedFile.collectAsState()
+    val context = androidx.compose.ui.platform.LocalContext.current
+
+    LaunchedEffect(exportedFile) {
+        exportedFile?.let { file ->
+            try {
+                val uri = androidx.core.content.FileProvider.getUriForFile(
+                    context,
+                    "${context.packageName}.fileprovider",
+                    file
+                )
+                val intent = android.content.Intent(android.content.Intent.ACTION_SEND).apply {
+                    type = "application/json"
+                    putExtra(android.content.Intent.EXTRA_STREAM, uri)
+                    flags = android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION
+                }
+                val chooser = android.content.Intent.createChooser(intent, "JSON Verisini Paylaş")
+                context.startActivity(chooser)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            } finally {
+                viewModel.clearExportedFile()
+            }
+        }
+    }
 
     Scaffold(
         topBar = {

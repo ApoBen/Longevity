@@ -151,7 +151,7 @@
                 <data android:scheme="https"
                     android:host="@string/hostName"
                 
-                    android:pathPrefix="/Longevity/longevity-dashboard/"
+                    android:pathPrefix="/Longevity/"
                 
                 />
             </intent-filter>

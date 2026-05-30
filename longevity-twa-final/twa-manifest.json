@@ -12,19 +12,19 @@
   "navigationDividerColorDark": "#000000",
   "backgroundColor": "#0A0E1A",
   "enableNotifications": true,
-  "startUrl": "/Longevity/longevity-dashboard/index.html",
-  "iconUrl": "https://apoben.github.io/Longevity/longevity-dashboard/assets/icon-512.png",
-  "maskableIconUrl": "https://apoben.github.io/Longevity/longevity-dashboard/assets/icon-512.png",
+  "startUrl": "/Longevity/index.html",
+  "iconUrl": "https://apoben.github.io/Longevity/assets/icon-512.png",
+  "maskableIconUrl": "https://apoben.github.io/Longevity/assets/icon-512.png",
   "splashScreenFadeOutDuration": 300,
   "signingKey": {
     "path": "/home/apoben/Masaüstü/longevity/longevity-twa-final/android.keystore",
     "alias": "android"
   },
-  "appVersionName": "2",
-  "appVersionCode": 2,
+  "appVersionName": "3",
+  "appVersionCode": 3,
   "shortcuts": [],
   "generatorApp": "bubblewrap-cli",
-  "webManifestUrl": "https://apoben.github.io/Longevity/longevity-dashboard/manifest.json",
+  "webManifestUrl": "https://apoben.github.io/Longevity/manifest.json",
   "fallbackType": "customtabs",
   "features": {},
   "alphaDependencies": {
@@ -33,7 +33,7 @@
   "enableSiteSettingsShortcut": true,
   "isChromeOSOnly": false,
   "isMetaQuest": false,
-  "fullScopeUrl": "https://apoben.github.io/Longevity/longevity-dashboard/",
+  "fullScopeUrl": "https://apoben.github.io/Longevity/",
   "minSdkVersion": 21,
   "orientation": "portrait-primary",
   "fingerprints": [],
@@ -43,5 +43,5 @@
   "fileHandlers": [],
   "launchHandlerClientMode": "",
   "displayOverride": [],
-  "appVersion": "2"
+  "appVersion": "3"
 }
