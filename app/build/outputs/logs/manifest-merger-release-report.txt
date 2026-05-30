@@ -1,0 +1,662 @@
+-- Merging decision tree log ---
+provider#androidx.startup.InitializationProvider
+INJECTED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:47:9-56:20
+MERGED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:29:9-37:20
+MERGED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:29:9-37:20
+MERGED from [androidx.emoji2:emoji2:1.3.0] /home/apoben/.gradle/caches/8.14.3/transforms/0197ee1deb681bb564f8befeb42196a4/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.emoji2:emoji2:1.3.0] /home/apoben/.gradle/caches/8.14.3/transforms/0197ee1deb681bb564f8befeb42196a4/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/e676a70d288af81bda1d6851f8040abf/transformed/jetified-lifecycle-process-2.8.1/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/e676a70d288af81bda1d6851f8040abf/transformed/jetified-lifecycle-process-2.8.1/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/apoben/.gradle/caches/8.14.3/transforms/c63e826037ad6d14e582423011fd425f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/apoben/.gradle/caches/8.14.3/transforms/c63e826037ad6d14e582423011fd425f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/apoben/.gradle/caches/8.14.3/transforms/d595d5bf810c830e4c73be9027ae0fa1/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/apoben/.gradle/caches/8.14.3/transforms/d595d5bf810c830e4c73be9027ae0fa1/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
+	tools:node
+		ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:51:13-31
+	android:authorities
+		INJECTED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml
+		ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:49:13-68
+	android:exported
+		ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:50:13-37
+	android:name
+		ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:48:13-67
+manifest
+ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:2:1-60:12
+INJECTED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:2:1-60:12
+INJECTED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:2:1-60:12
+INJECTED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:2:1-60:12
+MERGED from [samsung-health-data-api-1.1.0.aar] /home/apoben/.gradle/caches/8.14.3/transforms/d890cac3229c8d622c4c2c68c2ab2fbb/transformed/jetified-samsung-health-data-api-1.1.0/AndroidManifest.xml:2:1-14:12
+MERGED from [androidx.hilt:hilt-work:1.2.0] /home/apoben/.gradle/caches/8.14.3/transforms/9a33abe04093a8b497ce76d1851a9a58/transformed/jetified-hilt-work-1.2.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.work:work-runtime-ktx:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/55a4e0f47536036d8c57874eee4b63f3/transformed/work-runtime-ktx-2.9.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:17:1-145:12
+MERGED from [androidx.hilt:hilt-navigation-compose:1.2.0] /home/apoben/.gradle/caches/8.14.3/transforms/5a700c520282752dd2ac110cdd92113b/transformed/jetified-hilt-navigation-compose-1.2.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.hilt:hilt-navigation:1.2.0] /home/apoben/.gradle/caches/8.14.3/transforms/ebc420003de130711868a70d4c6cd22a/transformed/jetified-hilt-navigation-1.2.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigation:navigation-common:2.7.7] /home/apoben/.gradle/caches/8.14.3/transforms/21fadaf79523db97b169cfa4e2dad180/transformed/navigation-common-2.7.7/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-runtime:2.7.7] /home/apoben/.gradle/caches/8.14.3/transforms/1d32f02e11783ba404571e5f36f0f00d/transformed/navigation-runtime-2.7.7/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-common-ktx:2.7.7] /home/apoben/.gradle/caches/8.14.3/transforms/a5fe1604904d6f0ab8929be426618463/transformed/navigation-common-ktx-2.7.7/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.7.7] /home/apoben/.gradle/caches/8.14.3/transforms/c98a0ac805810d6a76df915b65e6e8a7/transformed/navigation-runtime-ktx-2.7.7/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigation:navigation-compose:2.7.7] /home/apoben/.gradle/caches/8.14.3/transforms/14f299792628adb6bd8c9bee2859cd84/transformed/jetified-navigation-compose-2.7.7/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.dagger:hilt-android:2.51.1] /home/apoben/.gradle/caches/8.14.3/transforms/5430f9e79d32d00855c6b968e339783a/transformed/jetified-hilt-android-2.51.1/AndroidManifest.xml:16:1-19:12
+MERGED from [androidx.fragment:fragment:1.5.1] /home/apoben/.gradle/caches/8.14.3/transforms/284863604957e04cbfd7e844c5d76b12/transformed/fragment-1.5.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.activity:activity:1.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/21abad78d9228ac0a4e2bd8b7d773e74/transformed/jetified-activity-1.9.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity-ktx:1.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/05e8f5fd02708effe7cac65851184a92/transformed/jetified-activity-ktx-1.9.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material3:material3-android:1.2.1] /home/apoben/.gradle/caches/8.14.3/transforms/1f27d1bf9dd0bb16e3e4ff9d100a7340/transformed/jetified-material3-release/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity-compose:1.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/f8d732515324258cc1fcdda283894b78/transformed/jetified-activity-compose-1.9.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.loader:loader:1.0.0] /home/apoben/.gradle/caches/8.14.3/transforms/75716ccd9fd59a213ff2559880aa3a83/transformed/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.compose.animation:animation-core-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/7d68ecc0f1e51d222406c8c0e278d3b3/transformed/jetified-animation-core-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material:material-icons-core-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/34fd154ce13c39f5854fe557f0c6ee1f/transformed/jetified-material-icons-core-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material:material-ripple-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/748dee03a618bc6eedc566ad2e56badb/transformed/jetified-material-ripple-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.animation:animation-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/c8f5ce8df8a78f44f63ad9c8d145e7a2/transformed/jetified-animation-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/840592b4cf869d8ae822c4597ed81bcb/transformed/jetified-foundation-layout-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.foundation:foundation-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/9c2ea9ce517529614c8828189a2686ed/transformed/jetified-foundation-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-unit-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/b249200c4903ca95f5d7e8aa71861d02/transformed/jetified-ui-unit-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-geometry-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/e10f69436c10db5a89fd751609d1e689/transformed/jetified-ui-geometry-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-util-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/5ff556583345fe5761acbed762a7003e/transformed/jetified-ui-util-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/fccfe115a250cbe6c7c098c2e97d07af/transformed/jetified-ui-tooling-preview-release/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.compose.ui:ui-graphics-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/296ff24e2035f6e8651ed5d5f583a497/transformed/jetified-ui-graphics-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-text-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/4772df52c6bd45ac784004a753427b75/transformed/jetified-ui-text-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.emoji2:emoji2:1.3.0] /home/apoben/.gradle/caches/8.14.3/transforms/0197ee1deb681bb564f8befeb42196a4/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/e676a70d288af81bda1d6851f8040abf/transformed/jetified-lifecycle-process-2.8.1/AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/5c9bbcd7e6d03f759895a1032eb68671/transformed/jetified-lifecycle-livedata-core-ktx-2.8.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/37de4c27024698bb482ea90b017596d0/transformed/lifecycle-viewmodel-2.8.1/AndroidManifest.xml:2:1-5:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/378cb9048f48357ac1ef80dfbf77ff17/transformed/jetified-lifecycle-viewmodel-release/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /home/apoben/.gradle/caches/8.14.3/transforms/b71cc807301bd247bf2cbbaaee400bd9/transformed/jetified-savedstate-ktx-1.2.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate:1.2.1] /home/apoben/.gradle/caches/8.14.3/transforms/36f74b8f6e970834e72fdbfd4e7b737c/transformed/jetified-savedstate-1.2.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/bc7f10f55865bb91f898d8061044a0f1/transformed/jetified-lifecycle-runtime-release/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-service:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/6c54d917cafd4aa3312ab263c68b2233/transformed/jetified-lifecycle-service-2.8.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/b9d35ad30eed88aca0a2e9b6a77e3871/transformed/lifecycle-livedata-2.8.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/01d3630e33fb83cfdf2c7703040ee4f6/transformed/lifecycle-livedata-core-2.8.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/23541ff53b46ff7a3cee89e2178792c5/transformed/jetified-lifecycle-viewmodel-ktx-2.8.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/6569038f85631865586aeab4134c49b8/transformed/jetified-lifecycle-viewmodel-savedstate-2.8.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/49fab00c80f45164fef9b14cf18d05d2/transformed/jetified-lifecycle-runtime-ktx-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose-android:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/90b16fc4d189253cae26d71d041a62dc/transformed/jetified-lifecycle-viewmodel-compose-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/e9f67c88b8e46971063463381164f190/transformed/jetified-ui-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/apoben/.gradle/caches/8.14.3/transforms/e6a5b25931def0fbeba1a6d4dc385292/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.autofill:autofill:1.0.0] /home/apoben/.gradle/caches/8.14.3/transforms/0082124ce56c92b58107eec29ed2b6a5/transformed/jetified-autofill-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.customview:customview:1.0.0] /home/apoben/.gradle/caches/8.14.3/transforms/91675c804a620f3a75a4684e6b9da70f/transformed/customview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.13.1] /home/apoben/.gradle/caches/8.14.3/transforms/eed46f61eecbd68c1959fc7fc735ed0b/transformed/core-1.13.1/AndroidManifest.xml:17:1-30:12
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /home/apoben/.gradle/caches/8.14.3/transforms/dc37239fc9a7068c570cfd35e6e376b0/transformed/jetified-customview-poolingcontainer-1.0.0/AndroidManifest.xml:17:1-23:12
+MERGED from [androidx.core:core-ktx:1.13.1] /home/apoben/.gradle/caches/8.14.3/transforms/ac89e2c9683f5be2fe558b989bae53da/transformed/jetified-core-ktx-1.13.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.room:room-runtime:2.6.1] /home/apoben/.gradle/caches/8.14.3/transforms/276765efc2784f174cb264fe412b1594/transformed/room-runtime-2.6.1/AndroidManifest.xml:17:1-31:12
+MERGED from [androidx.room:room-ktx:2.6.1] /home/apoben/.gradle/caches/8.14.3/transforms/81f01d39148d14d73f861113609965f8/transformed/jetified-room-ktx-2.6.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.sqlite:sqlite-framework:2.4.0] /home/apoben/.gradle/caches/8.14.3/transforms/27cb521894dc3306bbf60438866c8502/transformed/sqlite-framework-2.4.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.sqlite:sqlite:2.4.0] /home/apoben/.gradle/caches/8.14.3/transforms/c3682cd3bc553f1f5385f302f1580133/transformed/sqlite-2.4.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.datastore:datastore-core-android:1.1.1] /home/apoben/.gradle/caches/8.14.3/transforms/87ca1d69668b8cdbb0d8aea76241c266/transformed/jetified-datastore-core-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.datastore:datastore-android:1.1.1] /home/apoben/.gradle/caches/8.14.3/transforms/4661b3a3ebb97054ddba274ce42c2b4e/transformed/jetified-datastore-release/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.datastore:datastore-preferences-android:1.1.1] /home/apoben/.gradle/caches/8.14.3/transforms/e42495df097eb138c39c3bb7f6964036/transformed/jetified-datastore-preferences-release/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] /home/apoben/.gradle/caches/8.14.3/transforms/6433eedaf491f464abd2a64de20d3bd2/transformed/jetified-annotation-experimental-1.4.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/751b02e0a7e45ad502f6dc8902b43f0b/transformed/jetified-runtime-saveable-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.runtime:runtime-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/a0dd8b538f1ba5c8ee80cee2fbf8b00f/transformed/jetified-runtime-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /home/apoben/.gradle/caches/8.14.3/transforms/edaefbd7a6746e08ee7f20230ddde7b6/transformed/core-runtime-2.2.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/apoben/.gradle/caches/8.14.3/transforms/a93c72a2d3c8ba8d0df713e3dbbc47a5/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/apoben/.gradle/caches/8.14.3/transforms/9a487653ee9e6a51e7fc5e08b212c2f7/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/apoben/.gradle/caches/8.14.3/transforms/c63e826037ad6d14e582423011fd425f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:17:1-55:12
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/apoben/.gradle/caches/8.14.3/transforms/d595d5bf810c830e4c73be9027ae0fa1/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.tracing:tracing:1.0.0] /home/apoben/.gradle/caches/8.14.3/transforms/ecc5f67e54830085cf64372dfd78ad45/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.dagger:dagger-lint-aar:2.51.1] /home/apoben/.gradle/caches/8.14.3/transforms/27c197b459eaf66b670cb5065ee9187d/transformed/jetified-dagger-lint-aar-2.51.1/AndroidManifest.xml:16:1-19:12
+	package
+		INJECTED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml
+	xmlns:tools
+		ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:3:5-51
+	android:versionCode
+		INJECTED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.POST_NOTIFICATIONS
+ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:6:5-77
+	android:name
+		ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:6:22-74
+uses-permission#android.permission.WAKE_LOCK
+ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:7:5-68
+MERGED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:23:5-68
+MERGED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:23:5-68
+	android:name
+		ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:7:22-65
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:8:5-81
+MERGED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:25:5-81
+MERGED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:25:5-81
+	android:name
+		ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:8:22-78
+application
+ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:13:5-58:19
+INJECTED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:13:5-58:19
+MERGED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:28:5-143:19
+MERGED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:28:5-143:19
+MERGED from [androidx.emoji2:emoji2:1.3.0] /home/apoben/.gradle/caches/8.14.3/transforms/0197ee1deb681bb564f8befeb42196a4/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.emoji2:emoji2:1.3.0] /home/apoben/.gradle/caches/8.14.3/transforms/0197ee1deb681bb564f8befeb42196a4/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/e676a70d288af81bda1d6851f8040abf/transformed/jetified-lifecycle-process-2.8.1/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/e676a70d288af81bda1d6851f8040abf/transformed/jetified-lifecycle-process-2.8.1/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.core:core:1.13.1] /home/apoben/.gradle/caches/8.14.3/transforms/eed46f61eecbd68c1959fc7fc735ed0b/transformed/core-1.13.1/AndroidManifest.xml:28:5-89
+MERGED from [androidx.core:core:1.13.1] /home/apoben/.gradle/caches/8.14.3/transforms/eed46f61eecbd68c1959fc7fc735ed0b/transformed/core-1.13.1/AndroidManifest.xml:28:5-89
+MERGED from [androidx.room:room-runtime:2.6.1] /home/apoben/.gradle/caches/8.14.3/transforms/276765efc2784f174cb264fe412b1594/transformed/room-runtime-2.6.1/AndroidManifest.xml:23:5-29:19
+MERGED from [androidx.room:room-runtime:2.6.1] /home/apoben/.gradle/caches/8.14.3/transforms/276765efc2784f174cb264fe412b1594/transformed/room-runtime-2.6.1/AndroidManifest.xml:23:5-29:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/apoben/.gradle/caches/8.14.3/transforms/9a487653ee9e6a51e7fc5e08b212c2f7/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/apoben/.gradle/caches/8.14.3/transforms/9a487653ee9e6a51e7fc5e08b212c2f7/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/apoben/.gradle/caches/8.14.3/transforms/c63e826037ad6d14e582423011fd425f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/apoben/.gradle/caches/8.14.3/transforms/c63e826037ad6d14e582423011fd425f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/apoben/.gradle/caches/8.14.3/transforms/d595d5bf810c830e4c73be9027ae0fa1/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/apoben/.gradle/caches/8.14.3/transforms/d595d5bf810c830e4c73be9027ae0fa1/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
+	android:extractNativeLibs
+		INJECTED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.13.1] /home/apoben/.gradle/caches/8.14.3/transforms/eed46f61eecbd68c1959fc7fc735ed0b/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
+	android:supportsRtl
+		ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:21:9-35
+	android:label
+		ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:19:9-41
+	android:fullBackupContent
+		ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:17:9-54
+	android:roundIcon
+		ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:20:9-54
+	tools:targetApi
+		ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:23:9-29
+	android:icon
+		ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:18:9-43
+	android:allowBackup
+		ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:15:9-35
+	android:theme
+		ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:22:9-66
+	android:dataExtractionRules
+		ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:16:9-65
+	android:name
+		ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:14:9-40
+activity#com.shealt.healthreport.MainActivity
+ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:25:9-33:20
+	android:exported
+		ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:27:13-36
+	android:theme
+		ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:28:13-70
+	android:name
+		ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:26:13-41
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:29:13-32:29
+action#android.intent.action.MAIN
+ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:30:17-69
+	android:name
+		ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:30:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:31:17-77
+	android:name
+		ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:31:27-74
+provider#androidx.core.content.FileProvider
+ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:36:9-44:20
+	android:grantUriPermissions
+		ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:40:13-47
+	android:authorities
+		ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:38:13-71
+	android:exported
+		ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:39:13-37
+	android:name
+		ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:37:13-62
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:41:13-43:54
+	android:resource
+		ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:43:17-51
+	android:name
+		ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:42:17-67
+meta-data#androidx.work.WorkManagerInitializer
+ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:52:13-55:39
+REJECTED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:34:13-36:52
+	tools:node
+		ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:55:17-36
+	android:value
+		ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:54:17-49
+	android:name
+		ADDED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml:53:17-68
+uses-sdk
+INJECTED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml
+INJECTED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml
+MERGED from [samsung-health-data-api-1.1.0.aar] /home/apoben/.gradle/caches/8.14.3/transforms/d890cac3229c8d622c4c2c68c2ab2fbb/transformed/jetified-samsung-health-data-api-1.1.0/AndroidManifest.xml:5:5-44
+MERGED from [samsung-health-data-api-1.1.0.aar] /home/apoben/.gradle/caches/8.14.3/transforms/d890cac3229c8d622c4c2c68c2ab2fbb/transformed/jetified-samsung-health-data-api-1.1.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.hilt:hilt-work:1.2.0] /home/apoben/.gradle/caches/8.14.3/transforms/9a33abe04093a8b497ce76d1851a9a58/transformed/jetified-hilt-work-1.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.hilt:hilt-work:1.2.0] /home/apoben/.gradle/caches/8.14.3/transforms/9a33abe04093a8b497ce76d1851a9a58/transformed/jetified-hilt-work-1.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.work:work-runtime-ktx:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/55a4e0f47536036d8c57874eee4b63f3/transformed/work-runtime-ktx-2.9.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.work:work-runtime-ktx:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/55a4e0f47536036d8c57874eee4b63f3/transformed/work-runtime-ktx-2.9.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.hilt:hilt-navigation-compose:1.2.0] /home/apoben/.gradle/caches/8.14.3/transforms/5a700c520282752dd2ac110cdd92113b/transformed/jetified-hilt-navigation-compose-1.2.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.hilt:hilt-navigation-compose:1.2.0] /home/apoben/.gradle/caches/8.14.3/transforms/5a700c520282752dd2ac110cdd92113b/transformed/jetified-hilt-navigation-compose-1.2.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.hilt:hilt-navigation:1.2.0] /home/apoben/.gradle/caches/8.14.3/transforms/ebc420003de130711868a70d4c6cd22a/transformed/jetified-hilt-navigation-1.2.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.hilt:hilt-navigation:1.2.0] /home/apoben/.gradle/caches/8.14.3/transforms/ebc420003de130711868a70d4c6cd22a/transformed/jetified-hilt-navigation-1.2.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-common:2.7.7] /home/apoben/.gradle/caches/8.14.3/transforms/21fadaf79523db97b169cfa4e2dad180/transformed/navigation-common-2.7.7/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-common:2.7.7] /home/apoben/.gradle/caches/8.14.3/transforms/21fadaf79523db97b169cfa4e2dad180/transformed/navigation-common-2.7.7/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-runtime:2.7.7] /home/apoben/.gradle/caches/8.14.3/transforms/1d32f02e11783ba404571e5f36f0f00d/transformed/navigation-runtime-2.7.7/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-runtime:2.7.7] /home/apoben/.gradle/caches/8.14.3/transforms/1d32f02e11783ba404571e5f36f0f00d/transformed/navigation-runtime-2.7.7/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-common-ktx:2.7.7] /home/apoben/.gradle/caches/8.14.3/transforms/a5fe1604904d6f0ab8929be426618463/transformed/navigation-common-ktx-2.7.7/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-common-ktx:2.7.7] /home/apoben/.gradle/caches/8.14.3/transforms/a5fe1604904d6f0ab8929be426618463/transformed/navigation-common-ktx-2.7.7/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.7.7] /home/apoben/.gradle/caches/8.14.3/transforms/c98a0ac805810d6a76df915b65e6e8a7/transformed/navigation-runtime-ktx-2.7.7/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.7.7] /home/apoben/.gradle/caches/8.14.3/transforms/c98a0ac805810d6a76df915b65e6e8a7/transformed/navigation-runtime-ktx-2.7.7/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-compose:2.7.7] /home/apoben/.gradle/caches/8.14.3/transforms/14f299792628adb6bd8c9bee2859cd84/transformed/jetified-navigation-compose-2.7.7/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-compose:2.7.7] /home/apoben/.gradle/caches/8.14.3/transforms/14f299792628adb6bd8c9bee2859cd84/transformed/jetified-navigation-compose-2.7.7/AndroidManifest.xml:5:5-44
+MERGED from [com.google.dagger:hilt-android:2.51.1] /home/apoben/.gradle/caches/8.14.3/transforms/5430f9e79d32d00855c6b968e339783a/transformed/jetified-hilt-android-2.51.1/AndroidManifest.xml:18:3-42
+MERGED from [com.google.dagger:hilt-android:2.51.1] /home/apoben/.gradle/caches/8.14.3/transforms/5430f9e79d32d00855c6b968e339783a/transformed/jetified-hilt-android-2.51.1/AndroidManifest.xml:18:3-42
+MERGED from [androidx.fragment:fragment:1.5.1] /home/apoben/.gradle/caches/8.14.3/transforms/284863604957e04cbfd7e844c5d76b12/transformed/fragment-1.5.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.5.1] /home/apoben/.gradle/caches/8.14.3/transforms/284863604957e04cbfd7e844c5d76b12/transformed/fragment-1.5.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/21abad78d9228ac0a4e2bd8b7d773e74/transformed/jetified-activity-1.9.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/21abad78d9228ac0a4e2bd8b7d773e74/transformed/jetified-activity-1.9.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity-ktx:1.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/05e8f5fd02708effe7cac65851184a92/transformed/jetified-activity-ktx-1.9.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-ktx:1.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/05e8f5fd02708effe7cac65851184a92/transformed/jetified-activity-ktx-1.9.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material3:material3-android:1.2.1] /home/apoben/.gradle/caches/8.14.3/transforms/1f27d1bf9dd0bb16e3e4ff9d100a7340/transformed/jetified-material3-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.material3:material3-android:1.2.1] /home/apoben/.gradle/caches/8.14.3/transforms/1f27d1bf9dd0bb16e3e4ff9d100a7340/transformed/jetified-material3-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity-compose:1.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/f8d732515324258cc1fcdda283894b78/transformed/jetified-activity-compose-1.9.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-compose:1.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/f8d732515324258cc1fcdda283894b78/transformed/jetified-activity-compose-1.9.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.loader:loader:1.0.0] /home/apoben/.gradle/caches/8.14.3/transforms/75716ccd9fd59a213ff2559880aa3a83/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /home/apoben/.gradle/caches/8.14.3/transforms/75716ccd9fd59a213ff2559880aa3a83/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.animation:animation-core-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/7d68ecc0f1e51d222406c8c0e278d3b3/transformed/jetified-animation-core-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-core-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/7d68ecc0f1e51d222406c8c0e278d3b3/transformed/jetified-animation-core-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-core-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/34fd154ce13c39f5854fe557f0c6ee1f/transformed/jetified-material-icons-core-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-core-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/34fd154ce13c39f5854fe557f0c6ee1f/transformed/jetified-material-icons-core-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-ripple-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/748dee03a618bc6eedc566ad2e56badb/transformed/jetified-material-ripple-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-ripple-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/748dee03a618bc6eedc566ad2e56badb/transformed/jetified-material-ripple-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/c8f5ce8df8a78f44f63ad9c8d145e7a2/transformed/jetified-animation-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/c8f5ce8df8a78f44f63ad9c8d145e7a2/transformed/jetified-animation-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/840592b4cf869d8ae822c4597ed81bcb/transformed/jetified-foundation-layout-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/840592b4cf869d8ae822c4597ed81bcb/transformed/jetified-foundation-layout-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/9c2ea9ce517529614c8828189a2686ed/transformed/jetified-foundation-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/9c2ea9ce517529614c8828189a2686ed/transformed/jetified-foundation-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-unit-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/b249200c4903ca95f5d7e8aa71861d02/transformed/jetified-ui-unit-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-unit-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/b249200c4903ca95f5d7e8aa71861d02/transformed/jetified-ui-unit-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-geometry-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/e10f69436c10db5a89fd751609d1e689/transformed/jetified-ui-geometry-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-geometry-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/e10f69436c10db5a89fd751609d1e689/transformed/jetified-ui-geometry-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-util-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/5ff556583345fe5761acbed762a7003e/transformed/jetified-ui-util-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-util-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/5ff556583345fe5761acbed762a7003e/transformed/jetified-ui-util-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/fccfe115a250cbe6c7c098c2e97d07af/transformed/jetified-ui-tooling-preview-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/fccfe115a250cbe6c7c098c2e97d07af/transformed/jetified-ui-tooling-preview-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-graphics-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/296ff24e2035f6e8651ed5d5f583a497/transformed/jetified-ui-graphics-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-graphics-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/296ff24e2035f6e8651ed5d5f583a497/transformed/jetified-ui-graphics-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-text-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/4772df52c6bd45ac784004a753427b75/transformed/jetified-ui-text-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-text-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/4772df52c6bd45ac784004a753427b75/transformed/jetified-ui-text-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2:1.3.0] /home/apoben/.gradle/caches/8.14.3/transforms/0197ee1deb681bb564f8befeb42196a4/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.emoji2:emoji2:1.3.0] /home/apoben/.gradle/caches/8.14.3/transforms/0197ee1deb681bb564f8befeb42196a4/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/e676a70d288af81bda1d6851f8040abf/transformed/jetified-lifecycle-process-2.8.1/AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/e676a70d288af81bda1d6851f8040abf/transformed/jetified-lifecycle-process-2.8.1/AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/5c9bbcd7e6d03f759895a1032eb68671/transformed/jetified-lifecycle-livedata-core-ktx-2.8.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/5c9bbcd7e6d03f759895a1032eb68671/transformed/jetified-lifecycle-livedata-core-ktx-2.8.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/37de4c27024698bb482ea90b017596d0/transformed/lifecycle-viewmodel-2.8.1/AndroidManifest.xml:4:5-43
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/37de4c27024698bb482ea90b017596d0/transformed/lifecycle-viewmodel-2.8.1/AndroidManifest.xml:4:5-43
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/378cb9048f48357ac1ef80dfbf77ff17/transformed/jetified-lifecycle-viewmodel-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/378cb9048f48357ac1ef80dfbf77ff17/transformed/jetified-lifecycle-viewmodel-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /home/apoben/.gradle/caches/8.14.3/transforms/b71cc807301bd247bf2cbbaaee400bd9/transformed/jetified-savedstate-ktx-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /home/apoben/.gradle/caches/8.14.3/transforms/b71cc807301bd247bf2cbbaaee400bd9/transformed/jetified-savedstate-ktx-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] /home/apoben/.gradle/caches/8.14.3/transforms/36f74b8f6e970834e72fdbfd4e7b737c/transformed/jetified-savedstate-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] /home/apoben/.gradle/caches/8.14.3/transforms/36f74b8f6e970834e72fdbfd4e7b737c/transformed/jetified-savedstate-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/bc7f10f55865bb91f898d8061044a0f1/transformed/jetified-lifecycle-runtime-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/bc7f10f55865bb91f898d8061044a0f1/transformed/jetified-lifecycle-runtime-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-service:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/6c54d917cafd4aa3312ab263c68b2233/transformed/jetified-lifecycle-service-2.8.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-service:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/6c54d917cafd4aa3312ab263c68b2233/transformed/jetified-lifecycle-service-2.8.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/b9d35ad30eed88aca0a2e9b6a77e3871/transformed/lifecycle-livedata-2.8.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/b9d35ad30eed88aca0a2e9b6a77e3871/transformed/lifecycle-livedata-2.8.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/01d3630e33fb83cfdf2c7703040ee4f6/transformed/lifecycle-livedata-core-2.8.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/01d3630e33fb83cfdf2c7703040ee4f6/transformed/lifecycle-livedata-core-2.8.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/23541ff53b46ff7a3cee89e2178792c5/transformed/jetified-lifecycle-viewmodel-ktx-2.8.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/23541ff53b46ff7a3cee89e2178792c5/transformed/jetified-lifecycle-viewmodel-ktx-2.8.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/6569038f85631865586aeab4134c49b8/transformed/jetified-lifecycle-viewmodel-savedstate-2.8.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/6569038f85631865586aeab4134c49b8/transformed/jetified-lifecycle-viewmodel-savedstate-2.8.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/49fab00c80f45164fef9b14cf18d05d2/transformed/jetified-lifecycle-runtime-ktx-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/49fab00c80f45164fef9b14cf18d05d2/transformed/jetified-lifecycle-runtime-ktx-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose-android:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/90b16fc4d189253cae26d71d041a62dc/transformed/jetified-lifecycle-viewmodel-compose-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose-android:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/90b16fc4d189253cae26d71d041a62dc/transformed/jetified-lifecycle-viewmodel-compose-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/e9f67c88b8e46971063463381164f190/transformed/jetified-ui-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/e9f67c88b8e46971063463381164f190/transformed/jetified-ui-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/apoben/.gradle/caches/8.14.3/transforms/e6a5b25931def0fbeba1a6d4dc385292/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/apoben/.gradle/caches/8.14.3/transforms/e6a5b25931def0fbeba1a6d4dc385292/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.autofill:autofill:1.0.0] /home/apoben/.gradle/caches/8.14.3/transforms/0082124ce56c92b58107eec29ed2b6a5/transformed/jetified-autofill-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.autofill:autofill:1.0.0] /home/apoben/.gradle/caches/8.14.3/transforms/0082124ce56c92b58107eec29ed2b6a5/transformed/jetified-autofill-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.0.0] /home/apoben/.gradle/caches/8.14.3/transforms/91675c804a620f3a75a4684e6b9da70f/transformed/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /home/apoben/.gradle/caches/8.14.3/transforms/91675c804a620f3a75a4684e6b9da70f/transformed/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.13.1] /home/apoben/.gradle/caches/8.14.3/transforms/eed46f61eecbd68c1959fc7fc735ed0b/transformed/core-1.13.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.13.1] /home/apoben/.gradle/caches/8.14.3/transforms/eed46f61eecbd68c1959fc7fc735ed0b/transformed/core-1.13.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /home/apoben/.gradle/caches/8.14.3/transforms/dc37239fc9a7068c570cfd35e6e376b0/transformed/jetified-customview-poolingcontainer-1.0.0/AndroidManifest.xml:20:5-21:38
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /home/apoben/.gradle/caches/8.14.3/transforms/dc37239fc9a7068c570cfd35e6e376b0/transformed/jetified-customview-poolingcontainer-1.0.0/AndroidManifest.xml:20:5-21:38
+MERGED from [androidx.core:core-ktx:1.13.1] /home/apoben/.gradle/caches/8.14.3/transforms/ac89e2c9683f5be2fe558b989bae53da/transformed/jetified-core-ktx-1.13.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.13.1] /home/apoben/.gradle/caches/8.14.3/transforms/ac89e2c9683f5be2fe558b989bae53da/transformed/jetified-core-ktx-1.13.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.room:room-runtime:2.6.1] /home/apoben/.gradle/caches/8.14.3/transforms/276765efc2784f174cb264fe412b1594/transformed/room-runtime-2.6.1/AndroidManifest.xml:21:5-44
+MERGED from [androidx.room:room-runtime:2.6.1] /home/apoben/.gradle/caches/8.14.3/transforms/276765efc2784f174cb264fe412b1594/transformed/room-runtime-2.6.1/AndroidManifest.xml:21:5-44
+MERGED from [androidx.room:room-ktx:2.6.1] /home/apoben/.gradle/caches/8.14.3/transforms/81f01d39148d14d73f861113609965f8/transformed/jetified-room-ktx-2.6.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.room:room-ktx:2.6.1] /home/apoben/.gradle/caches/8.14.3/transforms/81f01d39148d14d73f861113609965f8/transformed/jetified-room-ktx-2.6.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite-framework:2.4.0] /home/apoben/.gradle/caches/8.14.3/transforms/27cb521894dc3306bbf60438866c8502/transformed/sqlite-framework-2.4.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite-framework:2.4.0] /home/apoben/.gradle/caches/8.14.3/transforms/27cb521894dc3306bbf60438866c8502/transformed/sqlite-framework-2.4.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite:2.4.0] /home/apoben/.gradle/caches/8.14.3/transforms/c3682cd3bc553f1f5385f302f1580133/transformed/sqlite-2.4.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite:2.4.0] /home/apoben/.gradle/caches/8.14.3/transforms/c3682cd3bc553f1f5385f302f1580133/transformed/sqlite-2.4.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.datastore:datastore-core-android:1.1.1] /home/apoben/.gradle/caches/8.14.3/transforms/87ca1d69668b8cdbb0d8aea76241c266/transformed/jetified-datastore-core-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.datastore:datastore-core-android:1.1.1] /home/apoben/.gradle/caches/8.14.3/transforms/87ca1d69668b8cdbb0d8aea76241c266/transformed/jetified-datastore-core-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.datastore:datastore-android:1.1.1] /home/apoben/.gradle/caches/8.14.3/transforms/4661b3a3ebb97054ddba274ce42c2b4e/transformed/jetified-datastore-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.datastore:datastore-android:1.1.1] /home/apoben/.gradle/caches/8.14.3/transforms/4661b3a3ebb97054ddba274ce42c2b4e/transformed/jetified-datastore-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.datastore:datastore-preferences-android:1.1.1] /home/apoben/.gradle/caches/8.14.3/transforms/e42495df097eb138c39c3bb7f6964036/transformed/jetified-datastore-preferences-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.datastore:datastore-preferences-android:1.1.1] /home/apoben/.gradle/caches/8.14.3/transforms/e42495df097eb138c39c3bb7f6964036/transformed/jetified-datastore-preferences-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] /home/apoben/.gradle/caches/8.14.3/transforms/6433eedaf491f464abd2a64de20d3bd2/transformed/jetified-annotation-experimental-1.4.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] /home/apoben/.gradle/caches/8.14.3/transforms/6433eedaf491f464abd2a64de20d3bd2/transformed/jetified-annotation-experimental-1.4.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/751b02e0a7e45ad502f6dc8902b43f0b/transformed/jetified-runtime-saveable-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/751b02e0a7e45ad502f6dc8902b43f0b/transformed/jetified-runtime-saveable-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/a0dd8b538f1ba5c8ee80cee2fbf8b00f/transformed/jetified-runtime-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-android:1.6.7] /home/apoben/.gradle/caches/8.14.3/transforms/a0dd8b538f1ba5c8ee80cee2fbf8b00f/transformed/jetified-runtime-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /home/apoben/.gradle/caches/8.14.3/transforms/edaefbd7a6746e08ee7f20230ddde7b6/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /home/apoben/.gradle/caches/8.14.3/transforms/edaefbd7a6746e08ee7f20230ddde7b6/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/apoben/.gradle/caches/8.14.3/transforms/a93c72a2d3c8ba8d0df713e3dbbc47a5/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/apoben/.gradle/caches/8.14.3/transforms/a93c72a2d3c8ba8d0df713e3dbbc47a5/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/apoben/.gradle/caches/8.14.3/transforms/9a487653ee9e6a51e7fc5e08b212c2f7/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/apoben/.gradle/caches/8.14.3/transforms/9a487653ee9e6a51e7fc5e08b212c2f7/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/apoben/.gradle/caches/8.14.3/transforms/c63e826037ad6d14e582423011fd425f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:21:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/apoben/.gradle/caches/8.14.3/transforms/c63e826037ad6d14e582423011fd425f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:21:5-44
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/apoben/.gradle/caches/8.14.3/transforms/d595d5bf810c830e4c73be9027ae0fa1/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/apoben/.gradle/caches/8.14.3/transforms/d595d5bf810c830e4c73be9027ae0fa1/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.tracing:tracing:1.0.0] /home/apoben/.gradle/caches/8.14.3/transforms/ecc5f67e54830085cf64372dfd78ad45/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] /home/apoben/.gradle/caches/8.14.3/transforms/ecc5f67e54830085cf64372dfd78ad45/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.dagger:dagger-lint-aar:2.51.1] /home/apoben/.gradle/caches/8.14.3/transforms/27c197b459eaf66b670cb5065ee9187d/transformed/jetified-dagger-lint-aar-2.51.1/AndroidManifest.xml:18:3-42
+MERGED from [com.google.dagger:dagger-lint-aar:2.51.1] /home/apoben/.gradle/caches/8.14.3/transforms/27c197b459eaf66b670cb5065ee9187d/transformed/jetified-dagger-lint-aar-2.51.1/AndroidManifest.xml:18:3-42
+	android:targetSdkVersion
+		INJECTED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /home/apoben/Masaüstü/longevity/app/src/main/AndroidManifest.xml
+queries
+ADDED from [samsung-health-data-api-1.1.0.aar] /home/apoben/.gradle/caches/8.14.3/transforms/d890cac3229c8d622c4c2c68c2ab2fbb/transformed/jetified-samsung-health-data-api-1.1.0/AndroidManifest.xml:7:5-10:15
+package#com.sec.android.app.shealth
+ADDED from [samsung-health-data-api-1.1.0.aar] /home/apoben/.gradle/caches/8.14.3/transforms/d890cac3229c8d622c4c2c68c2ab2fbb/transformed/jetified-samsung-health-data-api-1.1.0/AndroidManifest.xml:8:9-63
+	android:name
+		ADDED from [samsung-health-data-api-1.1.0.aar] /home/apoben/.gradle/caches/8.14.3/transforms/d890cac3229c8d622c4c2c68c2ab2fbb/transformed/jetified-samsung-health-data-api-1.1.0/AndroidManifest.xml:8:18-60
+package#com.samsung.android.wear.shealth
+ADDED from [samsung-health-data-api-1.1.0.aar] /home/apoben/.gradle/caches/8.14.3/transforms/d890cac3229c8d622c4c2c68c2ab2fbb/transformed/jetified-samsung-health-data-api-1.1.0/AndroidManifest.xml:9:9-68
+	android:name
+		ADDED from [samsung-health-data-api-1.1.0.aar] /home/apoben/.gradle/caches/8.14.3/transforms/d890cac3229c8d622c4c2c68c2ab2fbb/transformed/jetified-samsung-health-data-api-1.1.0/AndroidManifest.xml:9:18-65
+uses-permission#android.permission.INTERNET
+ADDED from [samsung-health-data-api-1.1.0.aar] /home/apoben/.gradle/caches/8.14.3/transforms/d890cac3229c8d622c4c2c68c2ab2fbb/transformed/jetified-samsung-health-data-api-1.1.0/AndroidManifest.xml:12:5-67
+	android:name
+		ADDED from [samsung-health-data-api-1.1.0.aar] /home/apoben/.gradle/caches/8.14.3/transforms/d890cac3229c8d622c4c2c68c2ab2fbb/transformed/jetified-samsung-health-data-api-1.1.0/AndroidManifest.xml:12:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:24:5-79
+	android:name
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:24:22-76
+uses-permission#android.permission.FOREGROUND_SERVICE
+ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:26:5-77
+	android:name
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:26:22-74
+service#androidx.work.impl.background.systemalarm.SystemAlarmService
+ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:39:9-45:35
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:42:13-72
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:43:13-37
+	tools:ignore
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:44:13-60
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:45:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:41:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:40:13-88
+service#androidx.work.impl.background.systemjob.SystemJobService
+ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:46:9-52:35
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:49:13-70
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:50:13-36
+	android:permission
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:51:13-69
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:52:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:48:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:47:13-84
+service#androidx.work.impl.foreground.SystemForegroundService
+ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:53:9-59:35
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:56:13-77
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:57:13-37
+	tools:ignore
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:58:13-60
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:59:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:55:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:54:13-81
+receiver#androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver
+ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:61:9-66:35
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:64:13-35
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:65:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:66:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:63:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:62:13-88
+receiver#androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy
+ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:67:9-77:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:70:13-36
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:71:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:72:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:69:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:68:13-106
+intent-filter#action:name:android.intent.action.ACTION_POWER_CONNECTED+action:name:android.intent.action.ACTION_POWER_DISCONNECTED
+ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:73:13-76:29
+action#android.intent.action.ACTION_POWER_CONNECTED
+ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:74:17-87
+	android:name
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:74:25-84
+action#android.intent.action.ACTION_POWER_DISCONNECTED
+ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:75:17-90
+	android:name
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:75:25-87
+receiver#androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy
+ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:78:9-88:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:81:13-36
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:82:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:83:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:80:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:79:13-104
+intent-filter#action:name:android.intent.action.BATTERY_LOW+action:name:android.intent.action.BATTERY_OKAY
+ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:84:13-87:29
+action#android.intent.action.BATTERY_OKAY
+ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:85:17-77
+	android:name
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:85:25-74
+action#android.intent.action.BATTERY_LOW
+ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:86:17-76
+	android:name
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:86:25-73
+receiver#androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy
+ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:89:9-99:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:92:13-36
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:93:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:94:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:91:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:90:13-104
+intent-filter#action:name:android.intent.action.DEVICE_STORAGE_LOW+action:name:android.intent.action.DEVICE_STORAGE_OK
+ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:95:13-98:29
+action#android.intent.action.DEVICE_STORAGE_LOW
+ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:96:17-83
+	android:name
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:96:25-80
+action#android.intent.action.DEVICE_STORAGE_OK
+ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:97:17-82
+	android:name
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:97:25-79
+receiver#androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy
+ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:100:9-109:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:103:13-36
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:104:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:105:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:102:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:101:13-103
+intent-filter#action:name:android.net.conn.CONNECTIVITY_CHANGE
+ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:106:13-108:29
+action#android.net.conn.CONNECTIVITY_CHANGE
+ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:107:17-79
+	android:name
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:107:25-76
+receiver#androidx.work.impl.background.systemalarm.RescheduleReceiver
+ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:110:9-121:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:113:13-36
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:114:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:115:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:112:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:111:13-88
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:android.intent.action.TIMEZONE_CHANGED+action:name:android.intent.action.TIME_SET
+ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:116:13-120:29
+action#android.intent.action.BOOT_COMPLETED
+ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:117:17-79
+	android:name
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:117:25-76
+action#android.intent.action.TIME_SET
+ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:118:17-73
+	android:name
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:118:25-70
+action#android.intent.action.TIMEZONE_CHANGED
+ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:119:17-81
+	android:name
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:119:25-78
+receiver#androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver
+ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:122:9-131:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:125:13-72
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:126:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:127:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:124:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:123:13-99
+intent-filter#action:name:androidx.work.impl.background.systemalarm.UpdateProxies
+ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:128:13-130:29
+action#androidx.work.impl.background.systemalarm.UpdateProxies
+ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:129:17-98
+	android:name
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:129:25-95
+receiver#androidx.work.impl.diagnostics.DiagnosticsReceiver
+ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:132:9-142:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:135:13-35
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:136:13-36
+	android:permission
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:137:13-57
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:138:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:134:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:133:13-78
+intent-filter#action:name:androidx.work.diagnostics.REQUEST_DIAGNOSTICS
+ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:139:13-141:29
+action#androidx.work.diagnostics.REQUEST_DIAGNOSTICS
+ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:140:17-88
+	android:name
+		ADDED from [androidx.work:work-runtime:2.9.0] /home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/AndroidManifest.xml:140:25-85
+meta-data#androidx.emoji2.text.EmojiCompatInitializer
+ADDED from [androidx.emoji2:emoji2:1.3.0] /home/apoben/.gradle/caches/8.14.3/transforms/0197ee1deb681bb564f8befeb42196a4/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.emoji2:emoji2:1.3.0] /home/apoben/.gradle/caches/8.14.3/transforms/0197ee1deb681bb564f8befeb42196a4/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.3.0] /home/apoben/.gradle/caches/8.14.3/transforms/0197ee1deb681bb564f8befeb42196a4/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:30:17-75
+meta-data#androidx.lifecycle.ProcessLifecycleInitializer
+ADDED from [androidx.lifecycle:lifecycle-process:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/e676a70d288af81bda1d6851f8040abf/transformed/jetified-lifecycle-process-2.8.1/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.lifecycle:lifecycle-process:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/e676a70d288af81bda1d6851f8040abf/transformed/jetified-lifecycle-process-2.8.1/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.lifecycle:lifecycle-process:2.8.1] /home/apoben/.gradle/caches/8.14.3/transforms/e676a70d288af81bda1d6851f8040abf/transformed/jetified-lifecycle-process-2.8.1/AndroidManifest.xml:30:17-78
+permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] /home/apoben/.gradle/caches/8.14.3/transforms/eed46f61eecbd68c1959fc7fc735ed0b/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.13.1] /home/apoben/.gradle/caches/8.14.3/transforms/eed46f61eecbd68c1959fc7fc735ed0b/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.13.1] /home/apoben/.gradle/caches/8.14.3/transforms/eed46f61eecbd68c1959fc7fc735ed0b/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
+permission#com.shealt.healthreport.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] /home/apoben/.gradle/caches/8.14.3/transforms/eed46f61eecbd68c1959fc7fc735ed0b/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.13.1] /home/apoben/.gradle/caches/8.14.3/transforms/eed46f61eecbd68c1959fc7fc735ed0b/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.13.1] /home/apoben/.gradle/caches/8.14.3/transforms/eed46f61eecbd68c1959fc7fc735ed0b/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
+uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] /home/apoben/.gradle/caches/8.14.3/transforms/eed46f61eecbd68c1959fc7fc735ed0b/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.13.1] /home/apoben/.gradle/caches/8.14.3/transforms/eed46f61eecbd68c1959fc7fc735ed0b/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
+uses-permission#com.shealt.healthreport.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] /home/apoben/.gradle/caches/8.14.3/transforms/eed46f61eecbd68c1959fc7fc735ed0b/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.13.1] /home/apoben/.gradle/caches/8.14.3/transforms/eed46f61eecbd68c1959fc7fc735ed0b/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
+service#androidx.room.MultiInstanceInvalidationService
+ADDED from [androidx.room:room-runtime:2.6.1] /home/apoben/.gradle/caches/8.14.3/transforms/276765efc2784f174cb264fe412b1594/transformed/room-runtime-2.6.1/AndroidManifest.xml:24:9-28:63
+	android:exported
+		ADDED from [androidx.room:room-runtime:2.6.1] /home/apoben/.gradle/caches/8.14.3/transforms/276765efc2784f174cb264fe412b1594/transformed/room-runtime-2.6.1/AndroidManifest.xml:27:13-37
+	tools:ignore
+		ADDED from [androidx.room:room-runtime:2.6.1] /home/apoben/.gradle/caches/8.14.3/transforms/276765efc2784f174cb264fe412b1594/transformed/room-runtime-2.6.1/AndroidManifest.xml:28:13-60
+	android:directBootAware
+		ADDED from [androidx.room:room-runtime:2.6.1] /home/apoben/.gradle/caches/8.14.3/transforms/276765efc2784f174cb264fe412b1594/transformed/room-runtime-2.6.1/AndroidManifest.xml:26:13-43
+	android:name
+		ADDED from [androidx.room:room-runtime:2.6.1] /home/apoben/.gradle/caches/8.14.3/transforms/276765efc2784f174cb264fe412b1594/transformed/room-runtime-2.6.1/AndroidManifest.xml:25:13-74
+meta-data#androidx.profileinstaller.ProfileInstallerInitializer
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/apoben/.gradle/caches/8.14.3/transforms/c63e826037ad6d14e582423011fd425f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/apoben/.gradle/caches/8.14.3/transforms/c63e826037ad6d14e582423011fd425f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/apoben/.gradle/caches/8.14.3/transforms/c63e826037ad6d14e582423011fd425f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:30:17-85
+receiver#androidx.profileinstaller.ProfileInstallReceiver
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/apoben/.gradle/caches/8.14.3/transforms/c63e826037ad6d14e582423011fd425f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:34:9-52:20
+	android:enabled
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/apoben/.gradle/caches/8.14.3/transforms/c63e826037ad6d14e582423011fd425f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:37:13-35
+	android:exported
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/apoben/.gradle/caches/8.14.3/transforms/c63e826037ad6d14e582423011fd425f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:38:13-36
+	android:permission
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/apoben/.gradle/caches/8.14.3/transforms/c63e826037ad6d14e582423011fd425f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:39:13-57
+	android:directBootAware
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/apoben/.gradle/caches/8.14.3/transforms/c63e826037ad6d14e582423011fd425f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:36:13-44
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/apoben/.gradle/caches/8.14.3/transforms/c63e826037ad6d14e582423011fd425f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:35:13-76
+intent-filter#action:name:androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/apoben/.gradle/caches/8.14.3/transforms/c63e826037ad6d14e582423011fd425f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:40:13-42:29
+action#androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/apoben/.gradle/caches/8.14.3/transforms/c63e826037ad6d14e582423011fd425f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:17-91
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/apoben/.gradle/caches/8.14.3/transforms/c63e826037ad6d14e582423011fd425f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:25-88
+intent-filter#action:name:androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/apoben/.gradle/caches/8.14.3/transforms/c63e826037ad6d14e582423011fd425f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:43:13-45:29
+action#androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/apoben/.gradle/caches/8.14.3/transforms/c63e826037ad6d14e582423011fd425f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:17-85
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/apoben/.gradle/caches/8.14.3/transforms/c63e826037ad6d14e582423011fd425f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:25-82
+intent-filter#action:name:androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/apoben/.gradle/caches/8.14.3/transforms/c63e826037ad6d14e582423011fd425f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:46:13-48:29
+action#androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/apoben/.gradle/caches/8.14.3/transforms/c63e826037ad6d14e582423011fd425f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:17-88
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/apoben/.gradle/caches/8.14.3/transforms/c63e826037ad6d14e582423011fd425f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:25-85
+intent-filter#action:name:androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/apoben/.gradle/caches/8.14.3/transforms/c63e826037ad6d14e582423011fd425f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:49:13-51:29
+action#androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/apoben/.gradle/caches/8.14.3/transforms/c63e826037ad6d14e582423011fd425f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/apoben/.gradle/caches/8.14.3/transforms/c63e826037ad6d14e582423011fd425f/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:25-92

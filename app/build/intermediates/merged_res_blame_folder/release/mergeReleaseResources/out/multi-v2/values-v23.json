@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.shealt.healthreport.app-mergeReleaseResources-60:/values-v23/values-v23.xml",
+            "map": [
+                {
+                    "source": "/home/apoben/.gradle/caches/8.14.3/transforms/01364db668ce51bdea2f6a3a252b6050/transformed/work-runtime-2.9.0/res/values-v23/values-v23.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,121",
+                        "endColumns": "65,62",
+                        "endOffsets": "116,179"
+                    }
+                }
+            ]
+        }
+    ]
+}

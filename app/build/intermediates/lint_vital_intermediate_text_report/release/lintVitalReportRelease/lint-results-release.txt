@@ -1,0 +1,14 @@
+/home/apoben/Masaüstü/longevity/app/src/main/res/xml/data_extraction_rules.xml:4: Error: Missing domain attribute, expected one of file, database, sharedpref, external, root, device_file, device_database, device_sharedpref, device_root [FullBackupContent]
+        <exclude path="." />
+        ~~~~~~~~~~~~~~~~~~~~
+/home/apoben/Masaüstü/longevity/app/src/main/res/xml/data_extraction_rules.xml:7: Error: Missing domain attribute, expected one of file, database, sharedpref, external, root, device_file, device_database, device_sharedpref, device_root [FullBackupContent]
+        <exclude path="." />
+        ~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "FullBackupContent":
+   Ensures that <data-extraction-rules> and <full-backup-content> files, which
+   configure backup options, are valid.
+
+   https://android-developers.googleblog.com/2015/07/auto-backup-for-apps-made-simple.html
+
+2 errors, 0 warnings

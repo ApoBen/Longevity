@@ -132,7 +132,7 @@ function renderEmptyState() {
         <div class="empty-state-card glass-card">
             <i data-lucide="database" class="empty-icon"></i>
             <h3>Saatlik Veri Bulunmuyor</h3>
-            <p>Seçilen tarih için detaylı saatlik dilim verisi bulunamadı. Lütfen ana sayfa üzerinden Samsung Health PDF/JSON dosyası import edin veya örnek veri yükleyin.</p>
+            <p>Seçilen tarih için detaylı saatlik dilim verisi bulunamadı. Lütfen ana sayfa üzerinden Samsung Health PDF raporu yükleyin veya örnek veri yükleyin.</p>
             <button class="btn btn-primary" onclick="window.location.hash = '#/'">Ana Sayfaya Git</button>
         </div>
     `;

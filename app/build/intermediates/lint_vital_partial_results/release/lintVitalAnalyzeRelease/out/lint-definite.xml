@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.4.2" type="incidents">
+
+    <incident
+        id="FullBackupContent"
+        severity="fatal"
+        message="Missing domain attribute, expected one of file, database, sharedpref, external, root, device_file, device_database, device_sharedpref, device_root">
+        <location
+            file="${:app*release*MAIN*sourceProvider*0*resDir*0}/xml/data_extraction_rules.xml"
+            line="4"
+            column="9"
+            startOffset="90"
+            endLine="4"
+            endColumn="29"
+            endOffset="110"/>
+    </incident>
+
+    <incident
+        id="FullBackupContent"
+        severity="fatal"
+        message="Missing domain attribute, expected one of file, database, sharedpref, external, root, device_file, device_database, device_sharedpref, device_root">
+        <location
+            file="${:app*release*MAIN*sourceProvider*0*resDir*0}/xml/data_extraction_rules.xml"
+            line="7"
+            column="9"
+            startOffset="161"
+            endLine="7"
+            endColumn="29"
+            endOffset="181"/>
+    </incident>
+
+</incidents>
