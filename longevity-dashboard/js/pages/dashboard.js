@@ -51,14 +51,14 @@ export async function render(container) {
                     <h3>Veri Yönetimi</h3>
                 </div>
                 <div class="actions-body">
-                    <p class="action-desc">Samsung Health uygulamasından export ettiğiniz saatlik PDF veya JSON dosyasını buraya yükleyin veya sistemi test etmek için örnek veriyi yükleyin.</p>
+                    <p class="action-desc">Samsung Health uygulamasından export ettiğiniz saatlik PDF raporunu buraya yükleyin veya sistemi test etmek için örnek veriyi yükleyin.</p>
                     <div class="action-buttons-row">
                         <label class="btn btn-primary" id="lbl-import-json">
-                            <i data-lucide="upload"></i> PDF/JSON Yükle
+                            <i data-lucide="upload"></i> PDF Raporu Yükle
                             <input type="file" id="input-import-json" accept=".json,.pdf,application/json,application/pdf" style="display: none;">
                         </label>
                         <button class="btn btn-secondary" id="btn-load-demo">
-                            <i data-lucide="beaker"></i> Demo Veri Yükle
+                            <i data-lucide="beaker"></i> Örnek Veri Yükle
                         </button>
                     </div>
                     <div class="last-sync-info">
@@ -268,7 +268,7 @@ function renderEmptyState() {
         <div class="empty-state-card glass-card">
             <i data-lucide="database" class="empty-icon"></i>
             <h3>Sağlık Verisi Bulunmuyor</h3>
-            <p>Seçilen tarih için Samsung Health verisi bulunamadı. Lütfen üstteki veya alttaki butonları kullanarak bir JSON dosyası import edin ya da hızlıca denemek için "Demo Veri Yükle" butonuna basın.</p>
+            <p>Seçilen tarih için Samsung Health verisi bulunamadı. Lütfen üstteki butonları kullanarak bir PDF raporu yükleyin ya da hızlıca denemek için "Örnek Veri Yükle" butonuna basın.</p>
         </div>
     `;
 }

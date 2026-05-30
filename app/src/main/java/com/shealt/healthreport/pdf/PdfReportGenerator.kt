@@ -38,9 +38,8 @@ class PdfReportGenerator @Inject constructor(
         val pageInfo2 = PdfDocument.PageInfo.Builder(595, 842, 2).create()
         val page2 = document.startPage(pageInfo2)
         drawPage2(page2.canvas, report)
-        document.finishPage(page2)
-
-        // Append machine-readable data block
+        
+        // Embed machine-readable data block invisibly at the bottom of Page 2
         try {
             val gson = createGson()
             val exportData = ExportData(
@@ -48,10 +47,12 @@ class PdfReportGenerator @Inject constructor(
                 days = listOf(report)
             )
             val jsonString = gson.toJson(exportData)
-            appendDataPages(document, jsonString)
+            embedDataInPage(page2.canvas, jsonString)
         } catch (e: Exception) {
             e.printStackTrace()
         }
+        
+        document.finishPage(page2)
 
         return savePdf(document, report)
     }
@@ -500,6 +501,7 @@ class PdfReportGenerator @Inject constructor(
         var pageNum = 1
         
         // Draw visual pages for each report
+        var lastPage: PdfDocument.Page? = null
         for (report in reports) {
             val pageInfo1 = PdfDocument.PageInfo.Builder(595, 842, pageNum++).create()
             val page1 = document.startPage(pageInfo1)
@@ -509,20 +511,27 @@ class PdfReportGenerator @Inject constructor(
             val pageInfo2 = PdfDocument.PageInfo.Builder(595, 842, pageNum++).create()
             val page2 = document.startPage(pageInfo2)
             drawPage2(page2.canvas, report)
-            document.finishPage(page2)
+            if (report == reports.last()) {
+                lastPage = page2
+            } else {
+                document.finishPage(page2)
+            }
         }
         
-        // Append machine-readable data block containing all days
-        try {
-            val gson = createGson()
-            val exportData = ExportData(
-                exportDate = LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME),
-                days = reports
-            )
-            val jsonString = gson.toJson(exportData)
-            appendDataPages(document, jsonString)
-        } catch (e: Exception) {
-            e.printStackTrace()
+        // Append machine-readable data block containing all days on the last page invisibly
+        if (lastPage != null) {
+            try {
+                val gson = createGson()
+                val exportData = ExportData(
+                    exportDate = LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME),
+                    days = reports
+                )
+                val jsonString = gson.toJson(exportData)
+                embedDataInPage(lastPage.canvas, jsonString)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+            document.finishPage(lastPage)
         }
         
         // Save PDF with date range filename
@@ -545,47 +554,25 @@ class PdfReportGenerator @Inject constructor(
         }
     }
 
-    private fun appendDataPages(document: PdfDocument, jsonString: String) {
+    private fun embedDataInPage(canvas: Canvas, jsonString: String) {
         val delimiterStart = "---LONGEVITY-DATA-START---"
         val delimiterEnd = "---LONGEVITY-DATA-END---"
         val fullDataString = "$delimiterStart\n$jsonString\n$delimiterEnd"
         
-        // Split into lines of 100 characters to keep it compact but safe
-        val lines = fullDataString.split("\n").flatMap { it.chunked(100) }
+        // Split into lines of 200 characters
+        val lines = fullDataString.split("\n").flatMap { it.chunked(200) }
         
         val paintData = Paint().apply {
-            color = Color.rgb(220, 220, 220) // Very light gray, almost invisible, but readable
-            textSize = 6f
+            color = Color.WHITE // Invisible on white background!
+            textSize = 0.01f
             typeface = Typeface.MONOSPACE
-            isAntiAlias = true
+            isAntiAlias = false
         }
         
-        var lineIndex = 0
-        var pageNumber = document.pages.size + 1
-        
-        while (lineIndex < lines.size) {
-            val pageInfo = PdfDocument.PageInfo.Builder(595, 842, pageNumber).create()
-            val page = document.startPage(pageInfo)
-            val canvas = page.canvas
-            
-            // Draw a tiny header on the data page
-            val paintHeader = Paint().apply {
-                color = Color.GRAY
-                textSize = 8f
-                typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
-                isAntiAlias = true
-            }
-            canvas.drawText("LONGEVITY INTEGRATION DATA - PAGE ${pageNumber} (DO NOT EDIT)", 50f, 40f, paintHeader)
-            
-            var yPos = 60f
-            while (lineIndex < lines.size && yPos < 800f) {
-                canvas.drawText(lines[lineIndex], 50f, yPos, paintData)
-                yPos += 8f
-                lineIndex++
-            }
-            
-            document.finishPage(page)
-            pageNumber++
+        var yPos = 830f
+        for (line in lines) {
+            canvas.drawText(line, 10f, yPos, paintData)
+            yPos += 0.01f
         }
     }
 
