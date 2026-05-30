@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import com.shealt.healthreport.ui.viewmodels.MainViewModel
 
 @Composable
-fun HomeScreen(viewModel: MainViewModel) {
+fun HomeScreen(viewModel: MainViewModel, onNavigateToExport: () -> Unit) {
     val hasPermissions by viewModel.hasPermissions.collectAsState()
     val isGenerating by viewModel.isGeneratingReport.collectAsState()
     val errorMessage by viewModel.errorMessage.collectAsState()
@@ -133,6 +133,16 @@ fun HomeScreen(viewModel: MainViewModel) {
                     } else {
                         Text("Şimdi Rapor Oluştur")
                     }
+                }
+                
+                Spacer(modifier = Modifier.height(16.dp))
+
+                Button(
+                    onClick = onNavigateToExport,
+                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary),
+                    modifier = Modifier.fillMaxWidth().height(56.dp)
+                ) {
+                    Text("Gelişmiş Veri Dışa Aktarımı")
                 }
             }
 

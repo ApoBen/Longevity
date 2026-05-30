@@ -9,6 +9,7 @@ import com.shealt.healthreport.data.local.ReportEntity
 import com.shealt.healthreport.data.local.SettingsDataStore
 import com.shealt.healthreport.data.repository.HealthPermissionManager
 import com.shealt.healthreport.data.repository.SamsungHealthRepository
+import com.shealt.healthreport.export.JsonExporter
 import com.shealt.healthreport.pdf.PdfReportGenerator
 import com.shealt.healthreport.worker.NotificationHelper
 import com.shealt.healthreport.worker.WorkScheduler
@@ -31,6 +32,7 @@ class MainViewModel @Inject constructor(
     private val permissionManager: HealthPermissionManager,
     private val samsungHealthRepository: SamsungHealthRepository,
     private val pdfReportGenerator: PdfReportGenerator,
+    private val jsonExporter: JsonExporter,
     private val reportDao: ReportDao,
     private val settingsDataStore: SettingsDataStore,
     private val workScheduler: WorkScheduler,
@@ -148,12 +150,12 @@ class MainViewModel @Inject constructor(
                             dateString = today.toString(),
                             filePath = pdfFile.absolutePath,
                             createdAtTimestamp = System.currentTimeMillis(),
-                            stepCount = report.steps?.totalSteps,
-                            sleepScore = report.sleep?.sleepScore,
-                            energyScore = report.energy?.score,
-                            avgHeartRate = report.heartRate?.averageBpm,
+                            stepCount = report.steps?.total,
+                            sleepScore = report.sleep?.score,
+                            energyScore = report.energyScore,
+                            avgHeartRate = report.heartRate?.dailySummary?.avg,
                             workoutCount = report.workouts.size,
-                            sleepDurationMinutes = report.sleep?.totalDurationMinutes
+                            sleepDurationMinutes = report.sleep?.totalMinutes
                         )
                     )
                     notificationHelper.showReportReadyNotification(pdfFile)
@@ -164,6 +166,36 @@ class MainViewModel @Inject constructor(
             } catch (e: Exception) {
                 Log.e(TAG, "Error generating report", e)
                 _errorMessage.value = "Rapor oluşturma hatası: ${getReadableErrorMessage(e)}"
+            } finally {
+                _isGeneratingReport.value = false
+            }
+        }
+    }
+
+    fun exportJsonNow() {
+        viewModelScope.launch {
+            _isGeneratingReport.value = true
+            _errorMessage.value = null
+            try {
+                if (!permissionManager.hasAllPermissions()) {
+                    _errorMessage.value = "Sağlık verisi izinleri verilmedi. Önce izin verin."
+                    _isGeneratingReport.value = false
+                    return@launch
+                }
+
+                _statusMessage.value = "JSON Dışa Aktarılıyor..."
+                val today = LocalDate.now()
+                val report = samsungHealthRepository.getDailyReport(today)
+                val file = jsonExporter.exportReport(report)
+
+                if (file != null) {
+                    _statusMessage.value = "JSON başarıyla dışa aktarıldı: ${file.name}"
+                } else {
+                    _errorMessage.value = "JSON dosyası oluşturulamadı."
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "Error exporting JSON", e)
+                _errorMessage.value = "JSON dışa aktarma hatası: ${getReadableErrorMessage(e)}"
             } finally {
                 _isGeneratingReport.value = false
             }
@@ -211,7 +243,7 @@ class MainViewModel @Inject constructor(
     private suspend fun scheduleWorker() {
         val hour = settingsDataStore.reportHourFlow.first()
         val minute = settingsDataStore.reportMinuteFlow.first()
-        workScheduler.scheduleDailyReport(hour, minute)
+        workScheduler.scheduleNightlyJsonExport(hour, minute)
     }
 
     private fun getReadableErrorMessage(e: Throwable): String {
@@ -234,6 +266,44 @@ class MainViewModel @Inject constructor(
                 }
             }
             else -> "Beklenmeyen hata: ${cause.javaClass.simpleName}\n${cause.message}"
+        }
+    }
+
+    fun exportDateRange(startDate: LocalDate, endDate: LocalDate) {
+        viewModelScope.launch {
+            _isGeneratingReport.value = true
+            _errorMessage.value = null
+            try {
+                if (!permissionManager.hasAllPermissions()) {
+                    _errorMessage.value = "Sağlık verisi izinleri verilmedi. Önce izin verin."
+                    _isGeneratingReport.value = false
+                    return@launch
+                }
+
+                _statusMessage.value = "Çoklu gün verileri çekiliyor..."
+                val reports = mutableListOf<com.shealt.healthreport.data.model.DailyHealthReport>()
+                var currentDate = startDate
+                
+                while (!currentDate.isAfter(endDate)) {
+                    val report = samsungHealthRepository.getDailyReport(currentDate)
+                    reports.add(report)
+                    currentDate = currentDate.plusDays(1)
+                }
+                
+                _statusMessage.value = "JSON Dışa Aktarılıyor..."
+                val file = jsonExporter.exportMultipleReports(reports, startDate, endDate)
+
+                if (file != null) {
+                    _statusMessage.value = "JSON başarıyla dışa aktarıldı: ${file.name}"
+                } else {
+                    _errorMessage.value = "JSON dosyası oluşturulamadı."
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "Error exporting JSON range", e)
+                _errorMessage.value = "JSON dışa aktarma hatası: ${getReadableErrorMessage(e)}"
+            } finally {
+                _isGeneratingReport.value = false
+            }
         }
     }
 }

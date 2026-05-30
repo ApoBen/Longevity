@@ -18,6 +18,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.shealt.healthreport.ui.screens.HomeScreen
+import com.shealt.healthreport.ui.screens.ExportScreen
 import com.shealt.healthreport.ui.screens.ReportListScreen
 import com.shealt.healthreport.ui.screens.SettingsScreen
 import com.shealt.healthreport.ui.viewmodels.MainViewModel
@@ -70,13 +71,19 @@ fun AppNavigation() {
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(Screen.Home.route) {
-                HomeScreen(viewModel = viewModel)
+                HomeScreen(
+                    viewModel = viewModel,
+                    onNavigateToExport = { navController.navigate("export") }
+                )
             }
             composable(Screen.Reports.route) {
                 ReportListScreen(viewModel = viewModel)
             }
             composable(Screen.Settings.route) {
                 SettingsScreen(viewModel = viewModel)
+            }
+            composable("export") {
+                ExportScreen(viewModel = viewModel, onBack = { navController.popBackStack() })
             }
         }
     }

@@ -1,26 +1,24 @@
 package com.shealt.healthreport.worker
 
 import android.content.Context
+import android.util.Log
 import androidx.hilt.work.HiltWorker
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
-import com.shealt.healthreport.data.local.ReportDao
-import com.shealt.healthreport.data.local.ReportEntity
 import com.shealt.healthreport.data.repository.HealthPermissionManager
 import com.shealt.healthreport.data.repository.SamsungHealthRepository
-import com.shealt.healthreport.pdf.PdfReportGenerator
+import com.shealt.healthreport.export.JsonExporter
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import java.time.LocalDate
 
 @HiltWorker
-class HealthDataWorker @AssistedInject constructor(
+class JsonExportWorker @AssistedInject constructor(
     @Assisted private val context: Context,
     @Assisted workerParams: WorkerParameters,
     private val samsungHealthRepository: SamsungHealthRepository,
     private val permissionManager: HealthPermissionManager,
-    private val pdfReportGenerator: PdfReportGenerator,
-    private val reportDao: ReportDao,
+    private val jsonExporter: JsonExporter,
     private val notificationHelper: NotificationHelper
 ) : CoroutineWorker(context, workerParams) {
 
@@ -32,27 +30,12 @@ class HealthDataWorker @AssistedInject constructor(
 
             val today = LocalDate.now()
             val report = samsungHealthRepository.getDailyReport(today)
-            val pdfFile = pdfReportGenerator.generatePdf(report)
+            val file = jsonExporter.exportReport(report)
 
-            if (pdfFile != null) {
-                // Save to database
-                reportDao.insertReport(
-                    ReportEntity(
-                        dateString = today.toString(),
-                        filePath = pdfFile.absolutePath,
-                        createdAtTimestamp = System.currentTimeMillis(),
-                        stepCount = report.steps?.total,
-                        sleepScore = report.sleep?.score,
-                        energyScore = report.energyScore,
-                        avgHeartRate = report.heartRate?.dailySummary?.avg,
-                        workoutCount = report.workouts.size,
-                        sleepDurationMinutes = report.sleep?.totalMinutes
-                    )
-                )
-
-                // Show notification
-                notificationHelper.showReportReadyNotification(pdfFile)
-
+            if (file != null) {
+                Log.d("JsonExportWorker", "JSON Export successful: ${file.absolutePath}")
+                // Optionally show a notification that export is done
+                // notificationHelper.showJsonExportNotification(file)
                 Result.success()
             } else {
                 Result.failure()

@@ -5,103 +5,122 @@ import java.time.LocalDateTime
 
 data class DailyHealthReport(
     val date: LocalDate,
-    val sleep: SleepData? = null,
-    val energy: EnergyData? = null,
     val heartRate: HeartRateData? = null,
+    val bloodOxygen: BloodOxygenData? = null,
     val steps: StepData? = null,
+    val skinTemperature: SkinTemperatureData? = null,
+    val sleep: SleepData? = null,
     val calories: CalorieData? = null,
-    val workouts: List<WorkoutData> = emptyList(),
     val bloodPressure: List<BloodPressureData> = emptyList(),
-    val bloodOxygen: List<BloodOxygenData> = emptyList(),
     val bloodGlucose: List<BloodGlucoseData> = emptyList(),
     val bodyComposition: BodyCompositionData? = null,
     val nutrition: NutritionData? = null,
     val waterIntake: WaterIntakeData? = null,
     val floors: FloorData? = null,
-    val skinTemperature: List<SkinTemperatureData> = emptyList(),
-    val sleepApnea: SleepApneaData? = null,
-    val userProfile: UserProfileData? = null
-)
-
-data class SleepData(
-    val totalDurationMinutes: Int,
-    val sleepScore: Int?, // Samsung Sleep Score
-    val remMinutes: Int,
-    val lightSleepMinutes: Int,
-    val deepSleepMinutes: Int,
-    val awakeMinutes: Int,
-    val startTime: LocalDateTime,
-    val endTime: LocalDateTime
-)
-
-data class EnergyData(
-    val score: Int, // Samsung Energy Score (0-100)
-    val physicalActivityScore: Int?,
-    val sleepScore: Int?,
-    val heartRateScore: Int?
+    val energyScore: Int? = null,
+    val workouts: List<WorkoutData> = emptyList()
 )
 
 data class HeartRateData(
-    val averageBpm: Int,
-    val minBpm: Int,
-    val maxBpm: Int,
-    val restingBpm: Int?
+    val dailySummary: HeartRateSummary,
+    val hourly: List<HourlyHeartRate> = emptyList()
+)
+
+data class HeartRateSummary(
+    val avg: Int,
+    val min: Int,
+    val max: Int,
+    val resting: Int?
+)
+
+data class HourlyHeartRate(
+    val hour: Int,
+    val min: Int,
+    val max: Int,
+    val avg: Int,
+    val count: Int
+)
+
+data class BloodOxygenData(
+    val hourly: List<HourlyBloodOxygen> = emptyList()
+)
+
+data class HourlyBloodOxygen(
+    val hour: Int,
+    val avg: Double,
+    val min: Double,
+    val count: Int
 )
 
 data class StepData(
-    val totalSteps: Int,
-    val goalSteps: Int,
-    val distanceMeters: Double
+    val total: Int,
+    val goal: Int,
+    val distanceMeters: Double,
+    val hourly: List<HourlySteps> = emptyList()
+)
+
+data class HourlySteps(
+    val hour: Int,
+    val steps: Int
+)
+
+data class SkinTemperatureData(
+    val hourly: List<HourlySkinTemperature> = emptyList()
+)
+
+data class HourlySkinTemperature(
+    val hour: Int,
+    val avg: Double,
+    val count: Int
+)
+
+data class SleepData(
+    val totalMinutes: Int,
+    val score: Int?,
+    val startTime: LocalDateTime,
+    val endTime: LocalDateTime,
+    val stages: SleepStages
+)
+
+data class SleepStages(
+    val rem: Int,
+    val light: Int,
+    val deep: Int,
+    val awake: Int
 )
 
 data class CalorieData(
-    val totalCalories: Double,
-    val activeCalories: Double,
-    val restCalories: Double
-)
-
-data class WorkoutData(
-    val type: String, // E.g., Running, Walking, Swimming
-    val durationMinutes: Int,
-    val caloriesBurned: Double,
-    val startTime: LocalDateTime,
-    val endTime: LocalDateTime,
-    val averageHeartRate: Int?,
-    val distanceMeters: Double?
+    val total: Double,
+    val active: Double,
+    val rest: Double
 )
 
 data class BloodPressureData(
     val systolic: Double,
     val diastolic: Double,
     val pulse: Int?,
-    val timestamp: LocalDateTime
-)
-
-data class BloodOxygenData(
-    val spo2: Double,
-    val timestamp: LocalDateTime
+    val time: String // "09:00" format expected by JSON
 )
 
 data class BloodGlucoseData(
     val glucose: Double,
-    val mealType: String?, // e.g., Fasting, After Meal
-    val timestamp: LocalDateTime
+    val mealType: String?,
+    val time: String // "07:00"
 )
 
 data class BodyCompositionData(
     val weightKg: Double,
-    val heightCm: Double?,
-    val bodyFatPercentage: Double?,
-    val skeletalMuscleMassKg: Double?,
+    val bodyFat: Double?,
+    val muscleMass: Double?,
     val bmi: Double?
 )
 
 data class NutritionData(
     val calories: Double,
-    val carbohydratesGrams: Double?,
-    val proteinGrams: Double?,
-    val fatGrams: Double?,
-    val fiberGrams: Double?
+    val carbs: Double?,
+    val protein: Double?,
+    val fat: Double?,
+    val fiber: Double?
 )
 
 data class WaterIntakeData(
@@ -110,25 +129,16 @@ data class WaterIntakeData(
 )
 
 data class FloorData(
-    val floorsClimbed: Int,
-    val goalFloors: Int
+    val climbed: Int,
+    val goal: Int
 )
 
-data class SkinTemperatureData(
-    val temperatureCelsius: Double,
-    val timestamp: LocalDateTime
-)
-
-data class SleepApneaData(
-    val averageAhi: Double, // Apnea-Hypopnea Index
-    val severity: String,
-    val timestamp: LocalDateTime
-)
-
-data class UserProfileData(
-    val nickname: String?,
-    val gender: String?,
-    val birthDate: String?,
-    val heightCm: Double?,
-    val weightKg: Double?
+data class WorkoutData(
+    val type: String,
+    val durationMin: Int,
+    val calories: Double,
+    val start: String,
+    val end: String,
+    val avgHR: Int?,
+    val distanceM: Double?
 )

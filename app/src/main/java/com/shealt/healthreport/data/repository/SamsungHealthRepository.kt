@@ -7,8 +7,6 @@ import com.samsung.android.sdk.health.data.request.DataTypes
 import com.samsung.android.sdk.health.data.request.DataType
 import com.samsung.android.sdk.health.data.request.DataType.SleepType.StageType
 import com.samsung.android.sdk.health.data.request.DataType.BloodGlucoseType.MealStatus
-import com.samsung.android.sdk.health.data.request.DataType.SleepApneaType.DetectedSign
-import com.samsung.android.sdk.health.data.request.DataType.UserProfileDataType.Gender
 import com.samsung.android.sdk.health.data.request.LocalTimeFilter
 import com.samsung.android.sdk.health.data.request.LocalDateFilter
 import com.samsung.android.sdk.health.data.helper.read
@@ -17,6 +15,7 @@ import com.shealt.healthreport.data.model.*
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -26,6 +25,7 @@ class SamsungHealthRepository @Inject constructor(
 ) {
     companion object {
         private const val TAG = "SamsungHealthRepository"
+        private val TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm")
     }
 
     suspend fun getDailyReport(date: LocalDate): DailyHealthReport {
@@ -35,7 +35,7 @@ class SamsungHealthRepository @Inject constructor(
         val dateFilter = LocalDateFilter.of(date, date)
 
         val sleepData = fetchSleepData(timeFilter)
-        val stepsData = fetchStepsData(timeFilter, dateFilter)
+        val stepsData = fetchStepsData(date)
         val heartRateData = fetchHeartRateData(timeFilter)
         val energyData = fetchEnergyData(dateFilter)
         val workouts = fetchWorkouts(timeFilter)
@@ -48,27 +48,23 @@ class SamsungHealthRepository @Inject constructor(
         val waterIntake = fetchWaterIntake(timeFilter, dateFilter)
         val floors = fetchFloorData(timeFilter)
         val skinTemperature = fetchSkinTemperature(timeFilter)
-        val sleepApnea = fetchSleepApnea(timeFilter)
-        val userProfile = fetchUserProfile()
 
         return DailyHealthReport(
             date = date,
             sleep = sleepData,
             steps = stepsData,
             heartRate = heartRateData,
-            energy = energyData,
-            workouts = workouts,
+            bloodOxygen = bloodOxygen,
+            skinTemperature = skinTemperature,
             calories = calories,
             bloodPressure = bloodPressure,
-            bloodOxygen = bloodOxygen,
             bloodGlucose = bloodGlucose,
             bodyComposition = bodyComposition,
             nutrition = nutrition,
             waterIntake = waterIntake,
             floors = floors,
-            skinTemperature = skinTemperature,
-            sleepApnea = sleepApnea,
-            userProfile = userProfile
+            energyScore = energyData,
+            workouts = workouts
         )
     }
 
@@ -102,14 +98,11 @@ class SamsungHealthRepository @Inject constructor(
             }
 
             SleepData(
-                totalDurationMinutes = duration,
-                sleepScore = if (score > 0) score else null,
-                remMinutes = rem,
-                lightSleepMinutes = light,
-                deepSleepMinutes = deep,
-                awakeMinutes = awake,
+                totalMinutes = duration,
+                score = if (score > 0) score else null,
                 startTime = LocalDateTime.ofInstant(data.startTime, ZoneId.systemDefault()),
-                endTime = LocalDateTime.ofInstant(data.endTime, ZoneId.systemDefault())
+                endTime = LocalDateTime.ofInstant(data.endTime, ZoneId.systemDefault()),
+                stages = SleepStages(rem = rem, light = light, deep = deep, awake = awake)
             )
         } catch (e: Exception) {
             Log.e(TAG, "fetchSleepData failed: ${e.message}", e)
@@ -117,8 +110,13 @@ class SamsungHealthRepository @Inject constructor(
         }
     }
 
-    private suspend fun fetchStepsData(timeFilter: LocalTimeFilter, dateFilter: LocalDateFilter): StepData? {
+    private suspend fun fetchStepsData(date: LocalDate): StepData? {
         return try {
+            val startOfDay = date.atStartOfDay()
+            val endOfDay = date.plusDays(1).atStartOfDay().minusNanos(1)
+            val timeFilter = LocalTimeFilter.of(startOfDay, endOfDay)
+            val dateFilter = LocalDateFilter.of(date, date)
+
             val totalStepsResponse = healthDataStore.aggregate(DataType.StepsType.TOTAL) {
                 setLocalTimeFilter(timeFilter)
             }
@@ -130,7 +128,6 @@ class SamsungHealthRepository @Inject constructor(
                 }
                 goalResponse.dataList.firstOrNull()?.getValueOrDefault(0)?.toInt() ?: 6000
             } catch (e: Exception) {
-                Log.w(TAG, "fetchStepsData: Failed to fetch steps goal, using default 6000: ${e.message}")
                 6000
             }
 
@@ -140,14 +137,34 @@ class SamsungHealthRepository @Inject constructor(
                 }
                 distanceResponse.dataList.firstOrNull()?.getValueOrDefault(0f)?.toDouble() ?: 0.0
             } catch (e: Exception) {
-                Log.w(TAG, "fetchStepsData: Failed to fetch distance: ${e.message}")
                 0.0
             }
 
+            val hourlyData = mutableListOf<HourlySteps>()
+            
+            for (hour in 0..23) {
+                val startOfHour = date.atTime(hour, 0)
+                val endOfHour = startOfHour.plusHours(1).minusNanos(1)
+                val hourFilter = LocalTimeFilter.of(startOfHour, endOfHour)
+                
+                try {
+                    val hourResponse = healthDataStore.aggregate(DataType.StepsType.TOTAL) {
+                        setLocalTimeFilter(hourFilter)
+                    }
+                    val count = hourResponse.dataList.firstOrNull()?.getValueOrDefault(0L)?.toInt() ?: 0
+                    if (count > 0) {
+                        hourlyData.add(HourlySteps(hour = hour, steps = count))
+                    }
+                } catch (e: Exception) {
+                    // Ignore hour if failed
+                }
+            }
+
             StepData(
-                totalSteps = totalSteps,
-                goalSteps = goalSteps,
-                distanceMeters = distance
+                total = totalSteps,
+                goal = goalSteps,
+                distanceMeters = distance,
+                hourly = hourlyData
             )
         } catch (e: Exception) {
             Log.e(TAG, "fetchStepsData failed: ${e.message}", e)
@@ -166,6 +183,7 @@ class SamsungHealthRepository @Inject constructor(
             var max = Float.MIN_VALUE
             var sum = 0f
             var count = 0
+            val hourlyMap = mutableMapOf<Int, MutableList<Float>>()
 
             response.dataList.forEach { point ->
                 val rate = point.getValueOrDefault(DataType.HeartRateType.HEART_RATE, 0f) ?: 0f
@@ -174,16 +192,35 @@ class SamsungHealthRepository @Inject constructor(
                     if (rate > max) max = rate
                     sum += rate
                     count++
+                    
+                    val hour = LocalDateTime.ofInstant(point.startTime, ZoneId.systemDefault()).hour
+                    hourlyMap.getOrPut(hour) { mutableListOf() }.add(rate)
                 }
+            }
+            
+            val hourlyData = (0..23).mapNotNull { hour ->
+                val readings = hourlyMap[hour]
+                if (!readings.isNullOrEmpty()) {
+                    HourlyHeartRate(
+                        hour = hour,
+                        min = readings.minOrNull()?.toInt() ?: 0,
+                        max = readings.maxOrNull()?.toInt() ?: 0,
+                        avg = readings.average().toInt(),
+                        count = readings.size
+                    )
+                } else null
             }
 
             if (count == 0) return null
 
             HeartRateData(
-                averageBpm = (sum / count).toInt(),
-                minBpm = min.toInt(),
-                maxBpm = max.toInt(),
-                restingBpm = min.toInt() // As resting heart rate is not directly queryable, we use the minimum recorded HR
+                dailySummary = HeartRateSummary(
+                    avg = (sum / count).toInt(),
+                    min = min.toInt(),
+                    max = max.toInt(),
+                    resting = min.toInt() // estimate
+                ),
+                hourly = hourlyData
             )
         } catch (e: Exception) {
             Log.e(TAG, "fetchHeartRateData failed: ${e.message}", e)
@@ -191,19 +228,12 @@ class SamsungHealthRepository @Inject constructor(
         }
     }
 
-    private suspend fun fetchEnergyData(dateFilter: LocalDateFilter): EnergyData? {
+    private suspend fun fetchEnergyData(dateFilter: LocalDateFilter): Int? {
         return try {
             val response = healthDataStore.read(DataTypes.ENERGY_SCORE) {
                 setLocalDateFilter(dateFilter)
             }
-            val score = response.dataList.firstOrNull()?.getValueOrDefault(DataType.EnergyScoreType.ENERGY_SCORE, 0f)?.toInt() ?: return null
-
-            EnergyData(
-                score = score,
-                physicalActivityScore = null,
-                sleepScore = null,
-                heartRateScore = null
-            )
+            response.dataList.firstOrNull()?.getValueOrDefault(DataType.EnergyScoreType.ENERGY_SCORE, 0f)?.toInt()
         } catch (e: Exception) {
             Log.e(TAG, "fetchEnergyData failed: ${e.message}", e)
             null
@@ -221,12 +251,12 @@ class SamsungHealthRepository @Inject constructor(
                 sessions.forEach { session ->
                     workouts.add(WorkoutData(
                         type = session.customTitle ?: "Workout",
-                        durationMinutes = session.duration?.toMinutes()?.toInt() ?: 0,
-                        caloriesBurned = session.calories?.toDouble() ?: 0.0,
-                        startTime = LocalDateTime.ofInstant(session.startTime, ZoneId.systemDefault()),
-                        endTime = LocalDateTime.ofInstant(session.endTime, ZoneId.systemDefault()),
-                        averageHeartRate = null,
-                        distanceMeters = session.distance?.toDouble()
+                        durationMin = session.duration?.toMinutes()?.toInt() ?: 0,
+                        calories = session.calories?.toDouble() ?: 0.0,
+                        start = LocalDateTime.ofInstant(session.startTime, ZoneId.systemDefault()).format(TIME_FORMATTER),
+                        end = LocalDateTime.ofInstant(session.endTime, ZoneId.systemDefault()).format(TIME_FORMATTER),
+                        avgHR = null,
+                        distanceM = session.distance?.toDouble()
                     ))
                 }
             }
@@ -244,27 +274,21 @@ class SamsungHealthRepository @Inject constructor(
                     setLocalTimeFilter(timeFilter)
                 }
                 activeResponse.dataList.firstOrNull()?.getValueOrDefault(0f)?.toDouble() ?: 0.0
-            } catch (e: Exception) {
-                Log.w(TAG, "fetchCalorieData: Failed to fetch active calories: ${e.message}")
-                0.0
-            }
+            } catch (e: Exception) { 0.0 }
 
             val totalCalories = try {
                 val totalResponse = healthDataStore.aggregate(DataType.ActivitySummaryType.TOTAL_CALORIES_BURNED) {
                     setLocalTimeFilter(timeFilter)
                 }
                 totalResponse.dataList.firstOrNull()?.getValueOrDefault(0f)?.toDouble() ?: 0.0
-            } catch (e: Exception) {
-                Log.w(TAG, "fetchCalorieData: Failed to fetch total calories: ${e.message}")
-                0.0
-            }
+            } catch (e: Exception) { 0.0 }
 
             val restCalories = if (totalCalories > activeCalories) totalCalories - activeCalories else 0.0
 
             CalorieData(
-                totalCalories = totalCalories,
-                activeCalories = activeCalories,
-                restCalories = restCalories
+                total = totalCalories,
+                active = activeCalories,
+                rest = restCalories
             )
         } catch (e: Exception) {
             Log.e(TAG, "fetchCalorieData failed: ${e.message}", e)
@@ -285,7 +309,7 @@ class SamsungHealthRepository @Inject constructor(
                     systolic = systolic,
                     diastolic = diastolic,
                     pulse = if (pulse > 0) pulse else null,
-                    timestamp = LocalDateTime.ofInstant(point.startTime, ZoneId.systemDefault())
+                    time = LocalDateTime.ofInstant(point.startTime, ZoneId.systemDefault()).format(TIME_FORMATTER)
                 )
             }
         } catch (e: Exception) {
@@ -294,21 +318,36 @@ class SamsungHealthRepository @Inject constructor(
         }
     }
 
-    private suspend fun fetchBloodOxygen(timeFilter: LocalTimeFilter): List<BloodOxygenData> {
+    private suspend fun fetchBloodOxygen(timeFilter: LocalTimeFilter): BloodOxygenData? {
         return try {
             val response = healthDataStore.read(DataTypes.BLOOD_OXYGEN) {
                 setLocalTimeFilter(timeFilter)
             }
-            response.dataList.map { point ->
+            if (response.dataList.isEmpty()) return null
+            
+            val hourlyMap = mutableMapOf<Int, MutableList<Double>>()
+            
+            response.dataList.forEach { point ->
                 val spo2 = point.getValueOrDefault(DataType.BloodOxygenType.OXYGEN_SATURATION, 0f).toDouble()
-                BloodOxygenData(
-                    spo2 = spo2,
-                    timestamp = LocalDateTime.ofInstant(point.startTime, ZoneId.systemDefault())
-                )
+                if (spo2 > 0) {
+                    val hour = LocalDateTime.ofInstant(point.startTime, ZoneId.systemDefault()).hour
+                    hourlyMap.getOrPut(hour) { mutableListOf() }.add(spo2)
+                }
             }
+            
+            val hourlyData = hourlyMap.map { (hour, readings) ->
+                HourlyBloodOxygen(
+                    hour = hour,
+                    avg = readings.average(),
+                    min = readings.minOrNull() ?: 0.0,
+                    count = readings.size
+                )
+            }.sortedBy { it.hour }
+            
+            BloodOxygenData(hourly = hourlyData)
         } catch (e: Exception) {
             Log.e(TAG, "fetchBloodOxygen failed: ${e.message}", e)
-            emptyList()
+            null
         }
     }
 
@@ -323,7 +362,7 @@ class SamsungHealthRepository @Inject constructor(
                 BloodGlucoseData(
                     glucose = glucose,
                     mealType = mealStatus?.name,
-                    timestamp = LocalDateTime.ofInstant(point.startTime, ZoneId.systemDefault())
+                    time = LocalDateTime.ofInstant(point.startTime, ZoneId.systemDefault()).format(TIME_FORMATTER)
                 )
             }
         } catch (e: Exception) {
@@ -339,16 +378,14 @@ class SamsungHealthRepository @Inject constructor(
             }
             val point = response.dataList.firstOrNull() ?: return null
             val weight = point.getValueOrDefault(DataType.BodyCompositionType.WEIGHT, 0f).toDouble()
-            val height = point.getValueOrDefault(DataType.BodyCompositionType.HEIGHT, 0f).toDouble()
             val fat = point.getValueOrDefault(DataType.BodyCompositionType.BODY_FAT, 0f).toDouble()
             val muscle = point.getValueOrDefault(DataType.BodyCompositionType.SKELETAL_MUSCLE_MASS, 0f).toDouble()
             val bmi = point.getValueOrDefault(DataType.BodyCompositionType.BODY_MASS_INDEX, 0f).toDouble()
 
             BodyCompositionData(
                 weightKg = weight,
-                heightCm = if (height > 0.0) height else null,
-                bodyFatPercentage = if (fat > 0.0) fat else null,
-                skeletalMuscleMassKg = if (muscle > 0.0) muscle else null,
+                bodyFat = if (fat > 0.0) fat else null,
+                muscleMass = if (muscle > 0.0) muscle else null,
                 bmi = if (bmi > 0.0) bmi else null
             )
         } catch (e: Exception) {
@@ -380,10 +417,10 @@ class SamsungHealthRepository @Inject constructor(
 
             NutritionData(
                 calories = totalCalories,
-                carbohydratesGrams = totalCarbs,
-                proteinGrams = totalProtein,
-                fatGrams = totalFat,
-                fiberGrams = totalFiber
+                carbs = totalCarbs,
+                protein = totalProtein,
+                fat = totalFat,
+                fiber = totalFiber
             )
         } catch (e: Exception) {
             Log.e(TAG, "fetchNutritionData failed: ${e.message}", e)
@@ -398,20 +435,14 @@ class SamsungHealthRepository @Inject constructor(
                     setLocalTimeFilter(timeFilter)
                 }
                 waterResponse.dataList.firstOrNull()?.getValueOrDefault(0f)?.toDouble() ?: 0.0
-            } catch (e: Exception) {
-                Log.w(TAG, "fetchWaterIntake: Failed to fetch total water: ${e.message}")
-                0.0
-            }
+            } catch (e: Exception) { 0.0 }
 
             val goalWater = try {
                 val goalResponse = healthDataStore.aggregate(DataType.WaterIntakeGoalType.LAST) {
                     setLocalDateFilter(dateFilter)
                 }
                 goalResponse.dataList.firstOrNull()?.getValueOrDefault(0f)?.toDouble() ?: 2000.0
-            } catch (e: Exception) {
-                Log.w(TAG, "fetchWaterIntake: Failed to fetch water goal: ${e.message}")
-                2000.0
-            }
+            } catch (e: Exception) { 2000.0 }
 
             WaterIntakeData(
                 amountMl = totalWater,
@@ -430,14 +461,11 @@ class SamsungHealthRepository @Inject constructor(
                     setLocalTimeFilter(timeFilter)
                 }
                 floorsResponse.dataList.firstOrNull()?.getValueOrDefault(0f)?.toInt() ?: 0
-            } catch (e: Exception) {
-                Log.w(TAG, "fetchFloorData: Failed to fetch total floors: ${e.message}")
-                0
-            }
+            } catch (e: Exception) { 0 }
 
             FloorData(
-                floorsClimbed = totalFloors,
-                goalFloors = 10 // Default floor goal
+                climbed = totalFloors,
+                goal = 10
             )
         } catch (e: Exception) {
             Log.e(TAG, "fetchFloorData failed: ${e.message}", e)
@@ -445,62 +473,34 @@ class SamsungHealthRepository @Inject constructor(
         }
     }
 
-    private suspend fun fetchSkinTemperature(timeFilter: LocalTimeFilter): List<SkinTemperatureData> {
+    private suspend fun fetchSkinTemperature(timeFilter: LocalTimeFilter): SkinTemperatureData? {
         return try {
             val response = healthDataStore.read(DataTypes.SKIN_TEMPERATURE) {
                 setLocalTimeFilter(timeFilter)
             }
-            response.dataList.map { point ->
+            if (response.dataList.isEmpty()) return null
+            
+            val hourlyMap = mutableMapOf<Int, MutableList<Double>>()
+            
+            response.dataList.forEach { point ->
                 val temp = point.getValueOrDefault(DataType.SkinTemperatureType.SKIN_TEMPERATURE, 0f).toDouble()
-                SkinTemperatureData(
-                    temperatureCelsius = temp,
-                    timestamp = LocalDateTime.ofInstant(point.startTime, ZoneId.systemDefault())
-                )
+                if (temp > 0) {
+                    val hour = LocalDateTime.ofInstant(point.startTime, ZoneId.systemDefault()).hour
+                    hourlyMap.getOrPut(hour) { mutableListOf() }.add(temp)
+                }
             }
+            
+            val hourlyData = hourlyMap.map { (hour, readings) ->
+                HourlySkinTemperature(
+                    hour = hour,
+                    avg = readings.average(),
+                    count = readings.size
+                )
+            }.sortedBy { it.hour }
+            
+            SkinTemperatureData(hourly = hourlyData)
         } catch (e: Exception) {
             Log.e(TAG, "fetchSkinTemperature failed: ${e.message}", e)
-            emptyList()
-        }
-    }
-
-    private suspend fun fetchSleepApnea(timeFilter: LocalTimeFilter): SleepApneaData? {
-        return try {
-            val response = healthDataStore.read(DataTypes.SLEEP_APNEA) {
-                setLocalTimeFilter(timeFilter)
-            }
-            val point = response.dataList.firstOrNull() ?: return null
-            val sign = point.getValue(DataType.SleepApneaType.DETECTED_SIGN)
-
-            SleepApneaData(
-                averageAhi = 0.0, // AHI not directly exposed as separate field in basic SleepApneaType
-                severity = sign?.name ?: "UNKNOWN",
-                timestamp = LocalDateTime.ofInstant(point.startTime, ZoneId.systemDefault())
-            )
-        } catch (e: Exception) {
-            Log.e(TAG, "fetchSleepApnea failed: ${e.message}", e)
-            null
-        }
-    }
-
-    private suspend fun fetchUserProfile(): UserProfileData? {
-        return try {
-            val response = healthDataStore.read(DataTypes.USER_PROFILE) { this }
-            val point = response.dataList.firstOrNull() ?: return null
-            val nickname = point.getValue(DataType.UserProfileDataType.NICKNAME)
-            val birthDate = point.getValue(DataType.UserProfileDataType.DATE_OF_BIRTH)
-            val height = point.getValueOrDefault(DataType.UserProfileDataType.HEIGHT, 0f).toDouble()
-            val weight = point.getValueOrDefault(DataType.UserProfileDataType.WEIGHT, 0f).toDouble()
-            val gender = point.getValue(DataType.UserProfileDataType.GENDER)
-
-            UserProfileData(
-                nickname = nickname,
-                gender = gender?.name,
-                birthDate = birthDate,
-                heightCm = if (height > 0.0) height else null,
-                weightKg = if (weight > 0.0) weight else null
-            )
-        } catch (e: Exception) {
-            Log.e(TAG, "fetchUserProfile failed: ${e.message}", e)
             null
         }
     }

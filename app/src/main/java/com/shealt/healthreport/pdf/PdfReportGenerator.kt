@@ -78,23 +78,6 @@ class PdfReportGenerator @Inject constructor(
         val dateStr = report.date.format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))
         canvas.drawText("Rapor Tarihi: $dateStr", 50f, 85f, paintNormalText)
 
-        // User Profile Summary
-        report.userProfile?.let { profile ->
-            val genderText = when (profile.gender) {
-                "GENDER_MALE" -> "Erkek"
-                "GENDER_FEMALE" -> "Kadın"
-                else -> "Belirtilmemiş"
-            }
-            val profileStr = buildString {
-                append("Kullanıcı: ${profile.nickname ?: "Belirtilmemiş"}")
-                if (!profile.birthDate.isNullOrEmpty()) append(" | Doğum Tarihi: ${profile.birthDate}")
-                append(" | Cinsiyet: $genderText")
-                if (profile.heightCm != null) append(" | Boy: ${profile.heightCm} cm")
-                if (profile.weightKg != null) append(" | Kilo: ${profile.weightKg} kg")
-            }
-            canvas.drawText(profileStr, 50f, 105f, paintNormalText)
-        }
-
         canvas.drawLine(50f, 115f, 545f, 115f, paintLine)
 
         var yPos = 145f
@@ -105,15 +88,15 @@ class PdfReportGenerator @Inject constructor(
         canvas.drawText("1. Fiziksel Aktivite & Adımlar", 50f, yPos, paintSectionHeader)
         yPos += 20f
         report.steps?.let { steps ->
-            if (steps.totalSteps > 0) {
+            if (steps.total > 0) {
                 val distKm = String.format("%.2f", steps.distanceMeters / 1000.0)
-                canvas.drawText("• Toplam Adım: ${steps.totalSteps} / Hedef: ${steps.goalSteps} | Yürünen Mesafe: $distKm km", 60f, yPos, paintNormalText)
+                canvas.drawText("• Toplam Adım: ${steps.total} / Hedef: ${steps.goal} | Yürünen Mesafe: $distKm km", 60f, yPos, paintNormalText)
                 yPos += stepSpacing
                 
                 // Progress Bar for Steps
                 val progressWidth = 450f
                 val progressHeight = 15f
-                val progress = (steps.totalSteps.toFloat() / steps.goalSteps.coerceAtLeast(1).toFloat()).coerceIn(0f, 1f)
+                val progress = (steps.total.toFloat() / steps.goal.coerceAtLeast(1).toFloat()).coerceIn(0f, 1f)
                 
                 val bgPaint = Paint().apply { color = Color.LTGRAY; isAntiAlias = true }
                 val fillPaint = Paint().apply { color = Color.rgb(0, 153, 76); isAntiAlias = true } // Green
@@ -125,12 +108,12 @@ class PdfReportGenerator @Inject constructor(
             }
         }
         report.floors?.let { floors ->
-            if (floors.floorsClimbed > 0) {
-                canvas.drawText("• Çıkılan Kat: ${floors.floorsClimbed} kat / Hedef: ${floors.goalFloors} kat", 60f, yPos, paintNormalText)
+            if (floors.climbed > 0) {
+                canvas.drawText("• Çıkılan Kat: ${floors.climbed} kat / Hedef: ${floors.goal} kat", 60f, yPos, paintNormalText)
                 yPos += stepSpacing
             }
         }
-        if ((report.steps?.totalSteps ?: 0) == 0 && (report.floors?.floorsClimbed ?: 0) == 0) {
+        if ((report.steps?.total ?: 0) == 0 && (report.floors?.climbed ?: 0) == 0) {
             canvas.drawText("Kayıtlı fiziksel aktivite verisi bulunmamaktadır.", 60f, yPos, paintNormalText)
             yPos += stepSpacing
         }
@@ -141,10 +124,10 @@ class PdfReportGenerator @Inject constructor(
         canvas.drawText("2. Kalp Sağlığı (Nabız)", 50f, yPos, paintSectionHeader)
         yPos += 20f
         report.heartRate?.let { hr ->
-            if (hr.averageBpm > 0) {
-                canvas.drawText("• Ortalama Nabız: ${hr.averageBpm} bpm | Aralık: ${hr.minBpm} - ${hr.maxBpm} bpm", 60f, yPos, paintNormalText)
+            if (hr.dailySummary.avg > 0) {
+                canvas.drawText("• Ortalama Nabız: ${hr.dailySummary.avg} bpm | Aralık: ${hr.dailySummary.min} - ${hr.dailySummary.max} bpm", 60f, yPos, paintNormalText)
                 yPos += stepSpacing
-                hr.restingBpm?.let { resting ->
+                hr.dailySummary.resting?.let { resting ->
                     canvas.drawText("• Dinlenme Nabzı: $resting bpm", 60f, yPos, paintNormalText)
                     yPos += stepSpacing
                 }
@@ -161,9 +144,9 @@ class PdfReportGenerator @Inject constructor(
                 
                 canvas.drawRoundRect(RectF(60f, yPos, 60f + bandWidth, yPos + bandHeight), 6f, 6f, bgPaint)
                 
-                val startX = 60f + ((hr.minBpm.toFloat() - hrMin) / range * bandWidth).coerceIn(0f, bandWidth)
-                val endX = 60f + ((hr.maxBpm.toFloat() - hrMin) / range * bandWidth).coerceIn(0f, bandWidth)
-                val avgX = 60f + ((hr.averageBpm.toFloat() - hrMin) / range * bandWidth).coerceIn(0f, bandWidth)
+                val startX = 60f + ((hr.dailySummary.min.toFloat() - hrMin) / range * bandWidth).coerceIn(0f, bandWidth)
+                val endX = 60f + ((hr.dailySummary.max.toFloat() - hrMin) / range * bandWidth).coerceIn(0f, bandWidth)
+                val avgX = 60f + ((hr.dailySummary.avg.toFloat() - hrMin) / range * bandWidth).coerceIn(0f, bandWidth)
                 
                 canvas.drawRoundRect(RectF(startX, yPos, endX, yPos + bandHeight), 6f, 6f, valPaint)
                 
@@ -186,17 +169,17 @@ class PdfReportGenerator @Inject constructor(
         // 3. Enerji Skoru & Kalori Dengesi
         canvas.drawText("3. Enerji Skoru & Kalori Dengesi", 50f, yPos, paintSectionHeader)
         yPos += 20f
-        report.energy?.let { energy ->
-            canvas.drawText("• Günlük Enerji Skoru: ${energy.score} / 100", 60f, yPos, paintNormalText)
+        report.energyScore?.let { energyScore ->
+            canvas.drawText("• Günlük Enerji Skoru: $energyScore / 100", 60f, yPos, paintNormalText)
             yPos += stepSpacing
         }
         report.calories?.let { cal ->
-            canvas.drawText("• Toplam Yakılan Kalori: ${String.format("%.1f", cal.totalCalories)} kcal", 60f, yPos, paintNormalText)
+            canvas.drawText("• Toplam Yakılan Kalori: ${String.format("%.1f", cal.total)} kcal", 60f, yPos, paintNormalText)
             yPos += stepSpacing
-            canvas.drawText("• Aktif Kalori: ${String.format("%.1f", cal.activeCalories)} kcal | Dinlenme Kalorisi: ${String.format("%.1f", cal.restCalories)} kcal", 60f, yPos, paintNormalText)
+            canvas.drawText("• Aktif Kalori: ${String.format("%.1f", cal.active)} kcal | Dinlenme Kalorisi: ${String.format("%.1f", cal.rest)} kcal", 60f, yPos, paintNormalText)
             yPos += stepSpacing
         }
-        if (report.energy == null && report.calories == null) {
+        if (report.energyScore == null && report.calories == null) {
             canvas.drawText("Kayıtlı veri bulunmamaktadır.", 60f, yPos, paintNormalText)
             yPos += stepSpacing
         }
@@ -207,10 +190,10 @@ class PdfReportGenerator @Inject constructor(
         canvas.drawText("4. Uyku Analizi", 50f, yPos, paintSectionHeader)
         yPos += 20f
         report.sleep?.let { sleep ->
-            if (sleep.totalDurationMinutes > 0) {
-                val hrs = sleep.totalDurationMinutes / 60
-                val mins = sleep.totalDurationMinutes % 60
-                val scoreStr = sleep.sleepScore?.let { " (Uyku Skoru: $it/100)" } ?: ""
+            if (sleep.totalMinutes > 0) {
+                val hrs = sleep.totalMinutes / 60
+                val mins = sleep.totalMinutes % 60
+                val scoreStr = sleep.score?.let { " (Uyku Skoru: $it/100)" } ?: ""
                 
                 canvas.drawText("• Toplam Uyku Süresi: $hrs saat $mins dakika$scoreStr", 60f, yPos, paintNormalText)
                 yPos += stepSpacing
@@ -220,11 +203,11 @@ class PdfReportGenerator @Inject constructor(
                 yPos += stepSpacing
 
                 // Sleep Stages Breakdown & Graph
-                if (sleep.remMinutes > 0 || sleep.lightSleepMinutes > 0 || sleep.deepSleepMinutes > 0 || sleep.awakeMinutes > 0) {
+                if (sleep.stages.rem > 0 || sleep.stages.light > 0 || sleep.stages.deep > 0 || sleep.stages.awake > 0) {
                     canvas.drawText("• Uyku Evreleri Kırılımı:", 60f, yPos, paintBoldText)
                     yPos += stepSpacing
                     
-                    val totalTracked = (sleep.remMinutes + sleep.lightSleepMinutes + sleep.deepSleepMinutes + sleep.awakeMinutes).toFloat()
+                    val totalTracked = (sleep.stages.rem + sleep.stages.light + sleep.stages.deep + sleep.stages.awake).toFloat()
                     if (totalTracked > 0) {
                         // Draw Segmented Bar Chart
                         val barWidth = 450f
@@ -236,10 +219,10 @@ class PdfReportGenerator @Inject constructor(
                         val lightPaint = Paint().apply { color = Color.rgb(0, 102, 204) } // Med blue
                         val deepPaint = Paint().apply { color = Color.rgb(0, 0, 102) } // Dark blue
                         
-                        val wAwake = (sleep.awakeMinutes / totalTracked) * barWidth
-                        val wRem = (sleep.remMinutes / totalTracked) * barWidth
-                        val wLight = (sleep.lightSleepMinutes / totalTracked) * barWidth
-                        val wDeep = (sleep.deepSleepMinutes / totalTracked) * barWidth
+                        val wAwake = (sleep.stages.awake / totalTracked) * barWidth
+                        val wRem = (sleep.stages.rem / totalTracked) * barWidth
+                        val wLight = (sleep.stages.light / totalTracked) * barWidth
+                        val wDeep = (sleep.stages.deep / totalTracked) * barWidth
                         
                         // Uyanık
                         if (wAwake > 0) canvas.drawRect(currentX, yPos, currentX + wAwake, yPos + barHeight, awakePaint)
@@ -256,10 +239,10 @@ class PdfReportGenerator @Inject constructor(
                         yPos += barHeight + 10f
                         
                         // Legend
-                        canvas.drawText("Uyanık: ${sleep.awakeMinutes}dk", 60f, yPos, Paint(paintNormalText).apply { color = awakePaint.color })
-                        canvas.drawText("REM: ${sleep.remMinutes}dk", 160f, yPos, Paint(paintNormalText).apply { color = remPaint.color })
-                        canvas.drawText("Hafif: ${sleep.lightSleepMinutes}dk", 250f, yPos, Paint(paintNormalText).apply { color = lightPaint.color })
-                        canvas.drawText("Derin: ${sleep.deepSleepMinutes}dk", 340f, yPos, Paint(paintNormalText).apply { color = deepPaint.color })
+                        canvas.drawText("Uyanık: ${sleep.stages.awake}dk", 60f, yPos, Paint(paintNormalText).apply { color = awakePaint.color })
+                        canvas.drawText("REM: ${sleep.stages.rem}dk", 160f, yPos, Paint(paintNormalText).apply { color = remPaint.color })
+                        canvas.drawText("Hafif: ${sleep.stages.light}dk", 250f, yPos, Paint(paintNormalText).apply { color = lightPaint.color })
+                        canvas.drawText("Derin: ${sleep.stages.deep}dk", 340f, yPos, Paint(paintNormalText).apply { color = deepPaint.color })
                         
                         yPos += stepSpacing
                     }
@@ -332,15 +315,11 @@ class PdfReportGenerator @Inject constructor(
         report.bodyComposition?.let { bc ->
             canvas.drawText("• Ağırlık: ${bc.weightKg} kg", 60f, yPos, paintNormalText)
             yPos += stepSpacing
-            bc.heightCm?.let {
-                canvas.drawText("• Boy: $it cm", 60f, yPos, paintNormalText)
-                yPos += stepSpacing
-            }
-            bc.bodyFatPercentage?.let {
+            bc.bodyFat?.let {
                 canvas.drawText("• Vücut Yağ Oranı: % $it", 60f, yPos, paintNormalText)
                 yPos += stepSpacing
             }
-            bc.skeletalMuscleMassKg?.let {
+            bc.muscleMass?.let {
                 canvas.drawText("• İskelet Kas Kütlesi: $it kg", 60f, yPos, paintNormalText)
                 yPos += stepSpacing
             }
@@ -362,15 +341,15 @@ class PdfReportGenerator @Inject constructor(
             canvas.drawText("• Tüketilen Toplam Enerji: ${String.format("%.1f", nut.calories)} kcal", 60f, yPos, paintNormalText)
             yPos += stepSpacing
             val macroStr = buildString {
-                nut.carbohydratesGrams?.let { append("Karbonhidrat: ${String.format("%.1f", it)}g | ") }
-                nut.proteinGrams?.let { append("Protein: ${String.format("%.1f", it)}g | ") }
-                nut.fatGrams?.let { append("Yağ: ${String.format("%.1f", it)}g") }
+                nut.carbs?.let { append("Karbonhidrat: ${String.format("%.1f", it)}g | ") }
+                nut.protein?.let { append("Protein: ${String.format("%.1f", it)}g | ") }
+                nut.fat?.let { append("Yağ: ${String.format("%.1f", it)}g") }
             }
             if (macroStr.isNotEmpty()) {
                 canvas.drawText("• Makro Besin Kırılımı: $macroStr", 60f, yPos, paintNormalText)
                 yPos += stepSpacing
             }
-            nut.fiberGrams?.let {
+            nut.fiber?.let {
                 canvas.drawText("• Diyet Lifi: ${String.format("%.1f", it)}g", 60f, yPos, paintNormalText)
                 yPos += stepSpacing
             }
@@ -381,12 +360,11 @@ class PdfReportGenerator @Inject constructor(
 
         yPos += sectionSpacing
 
-        // 8. Tıbbi Ölçümler (Tansiyon, Şeker, Oksijen, Cilt Sıcaklığı, Uyku Apnesi)
+        // 8. Tıbbi Ölçümler
         canvas.drawText("8. Kardiyovasküler & Metabolik Ölçümler", 50f, yPos, paintSectionHeader)
         yPos += 18f
         
         var hasMedicalData = false
-        val timeFormatter = DateTimeFormatter.ofPattern("HH:mm")
 
         if (report.bloodPressure.isNotEmpty()) {
             hasMedicalData = true
@@ -394,18 +372,20 @@ class PdfReportGenerator @Inject constructor(
             yPos += 15f
             report.bloodPressure.take(3).forEach { bp ->
                 val pulseStr = bp.pulse?.let { " (Nabız: $it)" } ?: ""
-                canvas.drawText("  - ${bp.timestamp.format(timeFormatter)} -> Sistolik: ${bp.systolic.toInt()} | Diastolik: ${bp.diastolic.toInt()} $pulseStr", 70f, yPos, paintNormalText)
+                canvas.drawText("  - ${bp.time} -> Sistolik: ${bp.systolic.toInt()} | Diastolik: ${bp.diastolic.toInt()} $pulseStr", 70f, yPos, paintNormalText)
                 yPos += stepSpacing
             }
         }
 
-        if (report.bloodOxygen.isNotEmpty()) {
-            hasMedicalData = true
-            canvas.drawText("• Kan Oksijen Doygunluğu (SpO2):", 60f, yPos, paintSectionHeader)
-            yPos += 15f
-            report.bloodOxygen.take(3).forEach { bo ->
-                canvas.drawText("  - ${bo.timestamp.format(timeFormatter)} -> % ${bo.spo2.toInt()}", 70f, yPos, paintNormalText)
-                yPos += stepSpacing
+        report.bloodOxygen?.hourly?.let { boHourly ->
+            if (boHourly.isNotEmpty()) {
+                hasMedicalData = true
+                canvas.drawText("• Kan Oksijen Doygunluğu (SpO2):", 60f, yPos, paintSectionHeader)
+                yPos += 15f
+                boHourly.take(3).forEach { bo ->
+                    canvas.drawText("  - Saat ${bo.hour}:00 -> % ${bo.avg.toInt()}", 70f, yPos, paintNormalText)
+                    yPos += stepSpacing
+                }
             }
         }
 
@@ -415,27 +395,18 @@ class PdfReportGenerator @Inject constructor(
             yPos += 15f
             report.bloodGlucose.take(3).forEach { bg ->
                 val typeStr = bg.mealType?.let { " (${translateMealType(it)})" } ?: ""
-                canvas.drawText("  - ${bg.timestamp.format(timeFormatter)} -> ${bg.glucose.toInt()} mg/dL$typeStr", 70f, yPos, paintNormalText)
+                canvas.drawText("  - ${bg.time} -> ${bg.glucose.toInt()} mg/dL$typeStr", 70f, yPos, paintNormalText)
                 yPos += stepSpacing
             }
         }
 
-        if (report.skinTemperature.isNotEmpty()) {
-            hasMedicalData = true
-            val avgTemp = report.skinTemperature.map { it.temperatureCelsius }.average()
-            canvas.drawText("• Ortalama Cilt Sıcaklığı: ${String.format("%.1f", avgTemp)} °C", 60f, yPos, paintNormalText)
-            yPos += stepSpacing
-        }
-
-        report.sleepApnea?.let { apnea ->
-            hasMedicalData = true
-            val severityTr = when (apnea.severity) {
-                "DETECTED" -> "Risk Tespit Edildi"
-                "NOT_DETECTED" -> "Risk Saptanmadı"
-                else -> "Belirsiz"
+        report.skinTemperature?.hourly?.let { stHourly ->
+            if (stHourly.isNotEmpty()) {
+                hasMedicalData = true
+                val avgTemp = stHourly.map { it.avg }.average()
+                canvas.drawText("• Ortalama Cilt Sıcaklığı: ${String.format("%.1f", avgTemp)} °C", 60f, yPos, paintNormalText)
+                yPos += stepSpacing
             }
-            canvas.drawText("• Uyku Apnesi Analizi: $severityTr", 60f, yPos, paintNormalText)
-            yPos += stepSpacing
         }
 
         if (!hasMedicalData) {
@@ -450,9 +421,9 @@ class PdfReportGenerator @Inject constructor(
         yPos += 18f
         if (report.workouts.isNotEmpty()) {
             report.workouts.take(5).forEach { workout ->
-                val duration = workout.durationMinutes
-                val cal = String.format("%.1f", workout.caloriesBurned)
-                val distStr = workout.distanceMeters?.let { String.format(" | Mesafe: %.2f km", it / 1000.0) } ?: ""
+                val duration = workout.durationMin
+                val cal = String.format("%.1f", workout.calories)
+                val distStr = workout.distanceM?.let { String.format(" | Mesafe: %.2f km", it / 1000.0) } ?: ""
                 canvas.drawText("• ${workout.type}: $duration dk - $cal kcal$distStr", 60f, yPos, paintNormalText)
                 yPos += stepSpacing
             }

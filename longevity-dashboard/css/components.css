@@ -1,0 +1,396 @@
+/* Component Styles - Longevity Platform */
+
+/* 1. Buttons with modern micro-animations */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    font-family: var(--font-family);
+    font-size: var(--font-sm);
+    font-weight: 600;
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-md);
+    border: 1px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all var(--transition-fast);
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--color-primary) 0%, rgba(59, 130, 246, 0.7) 100%);
+    color: #ffffff;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.9) 0%, var(--color-primary) 100%);
+    box-shadow: var(--glow-primary);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, var(--color-success) 0%, rgba(16, 185, 129, 0.7) 100%);
+    color: #ffffff;
+}
+
+.btn-success:hover:not(:disabled) {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.9) 0%, var(--color-success) 100%);
+    box-shadow: var(--glow-success);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, var(--color-danger) 0%, rgba(239, 68, 68, 0.7) 100%);
+    color: #ffffff;
+}
+
+.btn-danger:hover:not(:disabled) {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.9) 0%, var(--color-danger) 100%);
+    box-shadow: var(--glow-danger);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--border-color-hover);
+}
+
+.btn-icon {
+    padding: var(--space-2);
+    border-radius: var(--radius-full);
+}
+
+/* 2. Form Inputs with glassy borders */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+}
+
+.form-label {
+    font-size: var(--font-xs);
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.input, .select, .textarea {
+    font-family: var(--font-family);
+    font-size: var(--font-sm);
+    color: var(--text-primary);
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--space-3) var(--space-4);
+    outline: none;
+    transition: all var(--transition-fast);
+    width: 100%;
+}
+
+.input:focus, .select:focus, .textarea:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+    background: rgba(0, 0, 0, 0.35);
+}
+
+/* Custom Checkbox */
+.checkbox-container {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    cursor: pointer;
+    font-size: var(--font-sm);
+    color: var(--text-secondary);
+    user-select: none;
+    padding: var(--space-1) 0;
+}
+
+.checkbox-container input {
+    display: none;
+}
+
+.checkbox-custom {
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xs);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.checkbox-container:hover .checkbox-custom {
+    border-color: var(--border-color-hover);
+}
+
+.checkbox-container input:checked + .checkbox-custom {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.checkbox-custom::after {
+    content: '✓';
+    color: #ffffff;
+    font-size: var(--font-xs);
+    font-weight: bold;
+    display: none;
+}
+
+.checkbox-container input:checked + .checkbox-custom::after {
+    display: block;
+}
+
+/* 3. Badges */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--font-xs);
+    font-weight: 700;
+    padding: var(--space-1) var(--space-2_5);
+    border-radius: var(--radius-full);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-success {
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--color-success);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.badge-warning {
+    background: rgba(245, 158, 11, 0.15);
+    color: var(--color-warning);
+    border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.badge-danger {
+    background: rgba(239, 68, 68, 0.15);
+    color: var(--color-danger);
+    border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.badge-primary {
+    background: rgba(59, 130, 246, 0.15);
+    color: var(--color-primary);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+}
+
+/* 4. Dialog / Modal Overlay with scale-up animation */
+.dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(3, 4, 9, 0.75);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.dialog-overlay.show {
+    opacity: 1;
+}
+
+.dialog {
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius-xl);
+    transform: scale(0.9);
+    transition: transform var(--transition-normal);
+}
+
+.dialog-overlay.show .dialog {
+    transform: scale(1);
+}
+
+.dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-4) var(--space-6);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.dialog-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--space-6);
+}
+
+.dialog-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-6);
+    border-top: 1px solid var(--border-color);
+}
+
+.dialog-close-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: var(--font-2xl);
+    cursor: pointer;
+    line-height: 1;
+    transition: color var(--transition-fast);
+}
+
+.dialog-close-btn:hover {
+    color: var(--text-primary);
+}
+
+/* 5. Toast Notifications */
+.toast-container {
+    position: fixed;
+    top: var(--space-4);
+    right: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    z-index: 9999;
+    max-width: 350px;
+    width: calc(100% - var(--space-8));
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    transform: translateX(120%);
+    opacity: 0;
+    transition: all var(--transition-normal);
+    position: relative;
+    border-left: 4px solid transparent;
+}
+
+.toast.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.toast-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.toast-message {
+    font-size: var(--font-sm);
+    font-weight: 500;
+    flex: 1;
+}
+
+.toast-close {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: var(--font-lg);
+    cursor: pointer;
+    padding: 0 var(--space-1);
+    transition: color var(--transition-fast);
+}
+
+.toast-close:hover {
+    color: var(--text-primary);
+}
+
+.toast-success {
+    border-left-color: var(--color-success);
+    color: var(--color-success);
+}
+
+.toast-warning {
+    border-left-color: var(--color-warning);
+    color: var(--color-warning);
+}
+
+.toast-danger {
+    border-left-color: var(--color-danger);
+    color: var(--color-danger);
+}
+
+.toast-info {
+    border-left-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+/* 6. Standardized Progress Bars & Rings */
+.progress-bar-container {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    border-radius: var(--radius-full);
+    transition: width var(--transition-slow) cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--color-primary);
+}
+
+/* Progress Ring (Circle) */
+.progress-ring {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-ring svg {
+    transform: rotate(-90deg);
+}
+
+.progress-ring circle {
+    fill: transparent;
+    stroke-width: 4;
+}
+
+.progress-ring-bg {
+    stroke: rgba(255, 255, 255, 0.05);
+}
+
+.progress-ring-fill {
+    stroke: var(--color-primary);
+    stroke-linecap: round;
+    transition: stroke-dashoffset var(--transition-slow);
+}
+
+.progress-ring-text {
+    position: absolute;
+    font-size: var(--font-sm);
+    font-weight: 700;
+    color: var(--text-primary);
+}
