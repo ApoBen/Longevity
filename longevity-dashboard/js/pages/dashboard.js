@@ -51,11 +51,11 @@ export async function render(container) {
                     <h3>Veri Yönetimi</h3>
                 </div>
                 <div class="actions-body">
-                    <p class="action-desc">Samsung Health uygulamasından export ettiğiniz saatlik JSON dosyasını buraya yükleyin veya sistemi test etmek için örnek veriyi yükleyin.</p>
+                    <p class="action-desc">Samsung Health uygulamasından export ettiğiniz saatlik PDF veya JSON dosyasını buraya yükleyin veya sistemi test etmek için örnek veriyi yükleyin.</p>
                     <div class="action-buttons-row">
                         <label class="btn btn-primary" id="lbl-import-json">
-                            <i data-lucide="upload"></i> JSON Veri Yükle
-                            <input type="file" id="input-import-json" accept=".json" style="display: none;">
+                            <i data-lucide="upload"></i> PDF/JSON Yükle
+                            <input type="file" id="input-import-json" accept=".json,.pdf,application/json,application/pdf" style="display: none;">
                         </label>
                         <button class="btn btn-secondary" id="btn-load-demo">
                             <i data-lucide="beaker"></i> Demo Veri Yükle

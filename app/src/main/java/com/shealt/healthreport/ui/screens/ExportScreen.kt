@@ -30,11 +30,11 @@ fun ExportScreen(viewModel: MainViewModel, onBack: () -> Unit) {
                     file
                 )
                 val intent = android.content.Intent(android.content.Intent.ACTION_SEND).apply {
-                    type = "application/json"
+                    type = "application/pdf"
                     putExtra(android.content.Intent.EXTRA_STREAM, uri)
                     flags = android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION
                 }
-                val chooser = android.content.Intent.createChooser(intent, "JSON Verisini Paylaş")
+                val chooser = android.content.Intent.createChooser(intent, "PDF Raporunu Paylaş")
                 context.startActivity(chooser)
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -109,7 +109,7 @@ fun ExportScreen(viewModel: MainViewModel, onBack: () -> Unit) {
                     Spacer(modifier = Modifier.width(8.dp))
                     Text("Dışa Aktarılıyor...")
                 } else {
-                    Text("Seçili Aralığı JSON Olarak Çıkar")
+                    Text("Seçili Aralığı PDF Olarak Çıkar")
                 }
             }
 

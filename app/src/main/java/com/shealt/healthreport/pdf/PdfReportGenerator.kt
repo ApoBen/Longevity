@@ -9,6 +9,11 @@ import android.graphics.pdf.PdfDocument
 import android.os.Environment
 import android.graphics.RectF
 import com.shealt.healthreport.data.model.DailyHealthReport
+import com.shealt.healthreport.data.model.ExportData
+import com.google.gson.GsonBuilder
+import com.google.gson.JsonSerializer
+import java.time.LocalDate
+import java.time.LocalDateTime
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File
 import java.io.FileOutputStream
@@ -34,6 +39,19 @@ class PdfReportGenerator @Inject constructor(
         val page2 = document.startPage(pageInfo2)
         drawPage2(page2.canvas, report)
         document.finishPage(page2)
+
+        // Append machine-readable data block
+        try {
+            val gson = createGson()
+            val exportData = ExportData(
+                exportDate = LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME),
+                days = listOf(report)
+            )
+            val jsonString = gson.toJson(exportData)
+            appendDataPages(document, jsonString)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
 
         return savePdf(document, report)
     }
@@ -476,4 +494,108 @@ class PdfReportGenerator @Inject constructor(
             null
         }
     }
+
+    fun generateMultipleDaysPdf(reports: List<DailyHealthReport>, startDate: LocalDate, endDate: LocalDate): File? {
+        val document = PdfDocument()
+        var pageNum = 1
+        
+        // Draw visual pages for each report
+        for (report in reports) {
+            val pageInfo1 = PdfDocument.PageInfo.Builder(595, 842, pageNum++).create()
+            val page1 = document.startPage(pageInfo1)
+            drawPage1(page1.canvas, report)
+            document.finishPage(page1)
+            
+            val pageInfo2 = PdfDocument.PageInfo.Builder(595, 842, pageNum++).create()
+            val page2 = document.startPage(pageInfo2)
+            drawPage2(page2.canvas, report)
+            document.finishPage(page2)
+        }
+        
+        // Append machine-readable data block containing all days
+        try {
+            val gson = createGson()
+            val exportData = ExportData(
+                exportDate = LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME),
+                days = reports
+            )
+            val jsonString = gson.toJson(exportData)
+            appendDataPages(document, jsonString)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        
+        // Save PDF with date range filename
+        val fileName = "HealthReport_${startDate}_to_${endDate}.pdf"
+        val directory = File(context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), "HealthReports")
+        if (!directory.exists()) {
+            directory.mkdirs()
+        }
+        val file = File(directory, fileName)
+        return try {
+            FileOutputStream(file).use { out ->
+                document.writeTo(out)
+            }
+            document.close()
+            file
+        } catch (e: Exception) {
+            e.printStackTrace()
+            document.close()
+            null
+        }
+    }
+
+    private fun appendDataPages(document: PdfDocument, jsonString: String) {
+        val delimiterStart = "---LONGEVITY-DATA-START---"
+        val delimiterEnd = "---LONGEVITY-DATA-END---"
+        val fullDataString = "$delimiterStart\n$jsonString\n$delimiterEnd"
+        
+        // Split into lines of 100 characters to keep it compact but safe
+        val lines = fullDataString.split("\n").flatMap { it.chunked(100) }
+        
+        val paintData = Paint().apply {
+            color = Color.rgb(220, 220, 220) // Very light gray, almost invisible, but readable
+            textSize = 6f
+            typeface = Typeface.MONOSPACE
+            isAntiAlias = true
+        }
+        
+        var lineIndex = 0
+        var pageNumber = document.pages.size + 1
+        
+        while (lineIndex < lines.size) {
+            val pageInfo = PdfDocument.PageInfo.Builder(595, 842, pageNumber).create()
+            val page = document.startPage(pageInfo)
+            val canvas = page.canvas
+            
+            // Draw a tiny header on the data page
+            val paintHeader = Paint().apply {
+                color = Color.GRAY
+                textSize = 8f
+                typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
+                isAntiAlias = true
+            }
+            canvas.drawText("LONGEVITY INTEGRATION DATA - PAGE ${pageNumber} (DO NOT EDIT)", 50f, 40f, paintHeader)
+            
+            var yPos = 60f
+            while (lineIndex < lines.size && yPos < 800f) {
+                canvas.drawText(lines[lineIndex], 50f, yPos, paintData)
+                yPos += 8f
+                lineIndex++
+            }
+            
+            document.finishPage(page)
+            pageNumber++
+        }
+    }
+
+    private fun createGson() = GsonBuilder()
+        .setPrettyPrinting()
+        .registerTypeAdapter(LocalDateTime::class.java, JsonSerializer<LocalDateTime> { src, _, _ ->
+            com.google.gson.JsonPrimitive(src.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME))
+        })
+        .registerTypeAdapter(LocalDate::class.java, JsonSerializer<LocalDate> { src, _, _ ->
+            com.google.gson.JsonPrimitive(src.format(DateTimeFormatter.ISO_LOCAL_DATE))
+        })
+        .create()
 }

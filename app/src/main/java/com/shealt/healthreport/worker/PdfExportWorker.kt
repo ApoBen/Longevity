@@ -7,18 +7,18 @@ import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.shealt.healthreport.data.repository.HealthPermissionManager
 import com.shealt.healthreport.data.repository.SamsungHealthRepository
-import com.shealt.healthreport.export.JsonExporter
+import com.shealt.healthreport.pdf.PdfReportGenerator
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import java.time.LocalDate
 
 @HiltWorker
-class JsonExportWorker @AssistedInject constructor(
+class PdfExportWorker @AssistedInject constructor(
     @Assisted private val context: Context,
     @Assisted workerParams: WorkerParameters,
     private val samsungHealthRepository: SamsungHealthRepository,
     private val permissionManager: HealthPermissionManager,
-    private val jsonExporter: JsonExporter,
+    private val pdfReportGenerator: PdfReportGenerator,
     private val notificationHelper: NotificationHelper
 ) : CoroutineWorker(context, workerParams) {
 
@@ -30,12 +30,10 @@ class JsonExportWorker @AssistedInject constructor(
 
             val today = LocalDate.now()
             val report = samsungHealthRepository.getDailyReport(today)
-            val file = jsonExporter.exportReport(report)
+            val file = pdfReportGenerator.generateMultipleDaysPdf(listOf(report), today, today)
 
             if (file != null) {
-                Log.d("JsonExportWorker", "JSON Export successful: ${file.absolutePath}")
-                // Optionally show a notification that export is done
-                // notificationHelper.showJsonExportNotification(file)
+                Log.d("PdfExportWorker", "PDF Export successful: ${file.absolutePath}")
                 Result.success()
             } else {
                 Result.failure()

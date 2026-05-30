@@ -16,7 +16,7 @@ import javax.inject.Singleton
 class WorkScheduler @Inject constructor(
     @ApplicationContext private val context: Context
 ) {
-    fun scheduleNightlyJsonExport(hour: Int = 23, minute: Int = 0) {
+    fun scheduleNightlyPdfExport(hour: Int = 23, minute: Int = 0) {
         val now = LocalDateTime.now()
         var targetTime = now.withHour(hour).withMinute(minute).withSecond(0).withNano(0)
 
@@ -30,20 +30,20 @@ class WorkScheduler @Inject constructor(
             .setRequiresBatteryNotLow(true)
             .build()
 
-        val exportRequest = PeriodicWorkRequestBuilder<JsonExportWorker>(24, TimeUnit.HOURS)
+        val exportRequest = PeriodicWorkRequestBuilder<PdfExportWorker>(24, TimeUnit.HOURS)
             .setInitialDelay(initialDelay, TimeUnit.MILLISECONDS)
             .setConstraints(constraints)
             .build()
 
         WorkManager.getInstance(context).enqueueUniquePeriodicWork(
-            "NightlyJsonExport",
+            "NightlyPdfExport",
             ExistingPeriodicWorkPolicy.UPDATE,
             exportRequest
         )
     }
 
     fun cancelSchedule() {
-        WorkManager.getInstance(context).cancelUniqueWork("NightlyJsonExport")
+        WorkManager.getInstance(context).cancelUniqueWork("NightlyPdfExport")
         WorkManager.getInstance(context).cancelUniqueWork("DailyHealthReportWork")
         WorkManager.getInstance(context).cancelAllWork()
     }

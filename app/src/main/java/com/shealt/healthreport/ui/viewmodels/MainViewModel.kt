@@ -32,7 +32,6 @@ class MainViewModel @Inject constructor(
     private val permissionManager: HealthPermissionManager,
     private val samsungHealthRepository: SamsungHealthRepository,
     private val pdfReportGenerator: PdfReportGenerator,
-    private val jsonExporter: JsonExporter,
     private val reportDao: ReportDao,
     private val settingsDataStore: SettingsDataStore,
     private val workScheduler: WorkScheduler,
@@ -179,7 +178,7 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    fun exportJsonNow() {
+    fun exportPdfNow() {
         viewModelScope.launch {
             _isGeneratingReport.value = true
             _errorMessage.value = null
@@ -190,21 +189,21 @@ class MainViewModel @Inject constructor(
                     return@launch
                 }
 
-                _statusMessage.value = "JSON Dışa Aktarılıyor..."
+                _statusMessage.value = "PDF Raporu Hazırlanıyor..."
                 val today = LocalDate.now()
                 val report = samsungHealthRepository.getDailyReport(today)
-                val file = jsonExporter.exportReport(report)
+                val file = pdfReportGenerator.generatePdf(report)
 
                 if (file != null) {
-                    notificationHelper.showJsonReadyNotification(file)
+                    notificationHelper.showReportReadyNotification(file)
                     _exportedFile.value = file
-                    _statusMessage.value = "JSON başarıyla dışa aktarıldı: ${file.name}"
+                    _statusMessage.value = "PDF başarıyla dışa aktarıldı: ${file.name}"
                 } else {
-                    _errorMessage.value = "JSON dosyası oluşturulamadı."
+                    _errorMessage.value = "PDF dosyası oluşturulamadı."
                 }
             } catch (e: Exception) {
-                Log.e(TAG, "Error exporting JSON", e)
-                _errorMessage.value = "JSON dışa aktarma hatası: ${getReadableErrorMessage(e)}"
+                Log.e(TAG, "Error exporting PDF", e)
+                _errorMessage.value = "PDF dışa aktarma hatası: ${getReadableErrorMessage(e)}"
             } finally {
                 _isGeneratingReport.value = false
             }
@@ -252,7 +251,7 @@ class MainViewModel @Inject constructor(
     private suspend fun scheduleWorker() {
         val hour = settingsDataStore.reportHourFlow.first()
         val minute = settingsDataStore.reportMinuteFlow.first()
-        workScheduler.scheduleNightlyJsonExport(hour, minute)
+        workScheduler.scheduleNightlyPdfExport(hour, minute)
     }
 
     private fun getReadableErrorMessage(e: Throwable): String {
@@ -299,19 +298,19 @@ class MainViewModel @Inject constructor(
                     currentDate = currentDate.plusDays(1)
                 }
                 
-                _statusMessage.value = "JSON Dışa Aktarılıyor..."
-                val file = jsonExporter.exportMultipleReports(reports, startDate, endDate)
+                _statusMessage.value = "PDF Dışa Aktarılıyor..."
+                val file = pdfReportGenerator.generateMultipleDaysPdf(reports, startDate, endDate)
 
                 if (file != null) {
-                    notificationHelper.showJsonReadyNotification(file)
+                    notificationHelper.showPdfReadyNotification(file)
                     _exportedFile.value = file
-                    _statusMessage.value = "JSON başarıyla dışa aktarıldı: ${file.name}"
+                    _statusMessage.value = "PDF başarıyla dışa aktarıldı: ${file.name}"
                 } else {
-                    _errorMessage.value = "JSON dosyası oluşturulamadı."
+                    _errorMessage.value = "PDF dosyası oluşturulamadı."
                 }
             } catch (e: Exception) {
-                Log.e(TAG, "Error exporting JSON range", e)
-                _errorMessage.value = "JSON dışa aktarma hatası: ${getReadableErrorMessage(e)}"
+                Log.e(TAG, "Error exporting PDF range", e)
+                _errorMessage.value = "PDF dışa aktarma hatası: ${getReadableErrorMessage(e)}"
             } finally {
                 _isGeneratingReport.value = false
             }
