@@ -1,16 +1,22 @@
-/* Navigation Styles - Longevity Platform */
+/* Navigation Styles - Longevity Platform - Mini Apps Style */
 
 .bottom-nav {
     position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 64px;
+    bottom: 16px;
+    left: 16px;
+    width: calc(100% - 32px);
+    height: 72px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     padding: 0 var(--space-2);
     z-index: 999;
+    border-radius: 28px;
+    background: rgba(15, 20, 35, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
 .nav-item {
@@ -18,68 +24,66 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: var(--space-1);
     color: var(--text-muted);
-    height: 100%;
-    width: 100%;
-    padding: var(--space-1) 0;
-    transition: color var(--transition-fast), transform var(--transition-fast);
+    height: 56px;
+    min-width: 56px;
+    padding: 0 var(--space-1);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     position: relative;
     cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .nav-icon {
-    width: 20px;
-    height: 20px;
-    transition: transform var(--transition-normal) cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    width: 22px;
+    height: 22px;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    margin-bottom: 2px;
 }
 
 .nav-label {
     font-size: 9px;
     font-weight: 600;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.2px;
     text-transform: uppercase;
+    opacity: 0.8;
     transition: opacity var(--transition-fast);
 }
 
 /* Hover State */
 .nav-item:hover {
-    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-primary);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.nav-item:hover .nav-icon {
-    transform: translateY(-2px);
-}
-
-/* Active State with smooth accent-colored bar and glow */
+/* Active State with bright background and glow */
 .nav-item.active {
-    color: var(--color-primary);
+    background: linear-gradient(135deg, var(--color-primary), #0077ff);
+    color: #ffffff;
+    transform: translateY(-6px) scale(1.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 20px rgba(0, 153, 255, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.2);
 }
 
 .nav-item.active .nav-icon {
-    transform: translateY(-4px) scale(1.1);
+    transform: translateY(-1px);
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
 }
 
-.nav-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    width: 0;
-    height: 2px;
-    background: var(--color-primary);
-    box-shadow: 0 2px 10px var(--color-primary);
-    border-radius: var(--radius-full);
-    transition: width var(--transition-normal) cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.nav-item.active::before {
-    width: 32px;
+.nav-item.active .nav-label {
+    opacity: 1;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
 }
 
 /* Safe areas for premium bezel devices (iOS / Android pill) */
 @supports (padding-bottom: env(safe-area-inset-bottom)) {
     .bottom-nav {
-        height: calc(64px + env(safe-area-inset-bottom));
-        padding-bottom: env(safe-area-inset-bottom);
+        bottom: calc(16px + env(safe-area-inset-bottom));
     }
 }
